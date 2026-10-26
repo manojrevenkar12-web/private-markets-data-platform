@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "MER3",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 22000000.0,
+  "paid_in": 8800000.0,
+  "distributed": 397194.89,
+  "nav": 8640511.27,
+  "note": "German xlsx, period and cumulative columns, date as text 30.06.2026"
+}

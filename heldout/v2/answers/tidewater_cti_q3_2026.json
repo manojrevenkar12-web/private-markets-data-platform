@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "TID1",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 7500000.0,
+  "paid_in": 2437500.0,
+  "distributed": 0.0,
+  "nav": 2198640.12,
+  "note": "English xlsx, labels in column A, notes in column B, values in column C; reporting date is a real Excel date cell; second sheet with notes"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "BAS2",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 13125000.0,
+  "distributed": 5012644.9,
+  "nav": 9433118.27,
+  "note": "English long-format CSV: one statement spread over several rows (measure x basis); use the ITD rows, not QTD; NAV is 'Capital account balance, Closing'. Must NOT be rejected as multi-statement"
+}

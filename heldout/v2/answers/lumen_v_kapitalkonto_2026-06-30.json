@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "LUM5",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 10000000.0,
+  "paid_in": 6850000.0,
+  "distributed": 498115.4,
+  "nav": 9377201.63,
+  "note": "German text for a USD fund, German number format with USD after; an informational EUR conversion of the NAV (8.648.959,26 EUR) must not be taken as the NAV or the currency"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "TID1",
+  "period_end": "2026-03-31",
+  "currency": "EUR",
+  "commitment": 7500000.0,
+  "paid_in": 1875000.0,
+  "distributed": 0.0,
+  "nav": 1701388.9,
+  "note": "German markdown letter, € after the number, date '31. März 2026'"
+}

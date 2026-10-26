@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "FJD3",
+  "period_end": "2026-03-31",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 13245000.0,
+  "distributed": 6870412.55,
+  "nav": 9921047.3,
+  "note": "English markdown tables, space thousands separator, EUR after the number, 'of which recallable' sub-line"
+}

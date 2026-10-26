@@ -1,0 +1,24 @@
+FJORD SECONDARIES III SCSp
+Bericht über das Kapitalkonto des Anlegers
+==========================================
+
+Anleger:         Northlake Private Equity V GmbH & Co. KG
+Berichtsstichtag: 30.09.2026
+Berichtsdatum:    23.10.2026  (vorläufige Werte)
+Fondswährung:     EUR
+Beträge in Mio. EUR
+
+Position                               Q3 2026     kumuliert
+-------------------------------------  ---------   ---------
+Zeichnungsbetrag                                     15,000
+Kapitaleinzahlungen                        0,203     13,652
+Ausschüttungen                             0,512      7,913
+  davon wiederabrufbar                     0,000      0,950
+Offene Zusage                                         1,348
+Nettoinventarwert (NAV)                               9,386
+
+DPI                                                    0,58x
+TVPI                                                   1,27x
+
+Der NAV basiert überwiegend auf Bewertungen der Zielfonds zum 30.06.2026.
+Verwaltungsvergütung Q3 2026: 0,024 Mio. EUR (in den Kapitaleinzahlungen enthalten).

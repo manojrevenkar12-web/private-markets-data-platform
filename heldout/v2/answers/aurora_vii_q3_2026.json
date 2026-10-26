@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2026-09-30",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 18062500.0,
+  "distributed": 5331882.17,
+  "nav": 19512960.08,
+  "note": "English markdown, currency written US$, roll-forward with negatives in parentheses, cumulative figures in a separate table"
+}

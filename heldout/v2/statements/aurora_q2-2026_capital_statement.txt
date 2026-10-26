@@ -1,0 +1,54 @@
+AURORA CAPITAL MANAGEMENT, LLC
+1201 North Market Street, Suite 900
+Wilmington, DE 19801
+United States
+
+July 24, 2026
+
+Northlake Private Equity V GmbH & Co. KG
+Attn: Fund Accounting
+Bockenheimer Landstrasse 51
+60325 Frankfurt am Main
+Germany
+
+Re: Aurora Buyout Fund VII, L.P. -- Capital Account Statement
+    for the quarter ended June 30, 2026
+
+Dear Limited Partner,
+
+Please find below your capital account statement for the quarter ended June 30, 2026. All amounts
+are expressed in U.S. dollars. Investor ID: AUR7-LP-0042.
+
+                                                   Quarter ended      Inception to date
+                                                   June 30, 2026      June 30, 2026
+  ------------------------------------------------------------------------------------
+  Capital commitment                                                  $25,000,000.00
+  Contributions - investments                      $1,100,000.00      $16,412,500.00
+  Contributions - management fees & expenses         $150,000.00         $900,000.00
+  Total contributions (paid-in capital)            $1,250,000.00      $17,312,500.00
+  Distributions                                     ($612,400.00)     ($4,105,882.17)
+  Unfunded commitment (1)                                              $7,687,500.00
+  ------------------------------------------------------------------------------------
+
+Capital account roll-forward, quarter ended June 30, 2026
+
+  Beginning capital account, March 31, 2026                           $18,902,117.80
+  Contributions                                                        $1,250,000.00
+  Distributions                                                         ($612,400.00)
+  Management fee                                                        ($125,000.00)
+  Partnership expenses                                                   ($21,318.44)
+  Net realized gain on investments                                       $402,115.30
+  Net change in unrealized appreciation                                   $78,816.76
+  Ending capital account, June 30, 2026                               $19,874,331.42
+
+(1) Of the distributions above, $1,215,000.00 are recallable under Section 4.6 of the Limited
+    Partnership Agreement. Recallable amounts are not added back to the unfunded commitment shown.
+
+Capital calls are payable to the Partnership's account at Delaware Trust Bank, ABA 031100XXX.
+The management fee for the period was 2.0% p.a. on commitments during the investment period.
+
+These figures are unaudited. Please contact investor.relations@auroracap.example with any questions.
+
+Sincerely,
+
+Aurora Buyout Fund VII GP, LLC, as General Partner

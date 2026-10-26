@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 17312500.0,
+  "distributed": 4105882.17,
+  "nav": 19874331.42,
+  "note": "English letter, US date, $ prefix, period and inception-to-date columns; paid-in is the total of investment and fee contributions; distributions printed in parentheses; NAV is the ending capital account of the roll-forward"
+}

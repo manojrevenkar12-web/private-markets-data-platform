@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "NOV3",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 20000000.0,
+  "paid_in": 14350000.0,
+  "distributed": 2100000.0,
+  "nav": 17620000.0,
+  "note": "English text, amounts in EUR m, date 30/06/2026 (day first), H1 column next to inception-to-date"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "MER3",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 22000000.0,
+  "paid_in": 9900000.0,
+  "distributed": 715402.33,
+  "nav": 9488120.5,
+  "note": "English text, quarterly roll-forward first (period contributions and distributions), cumulative figures in a separate block; NAV is the closing capital account"
+}

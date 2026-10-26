@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "no NAV: the statement gives commitment, calls, distributions and fees but states that the valuation at 30.09.2026 will follow",
+  "note": "German xlsx for KES4 at 2026-09-30, full units"
+}

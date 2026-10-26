@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2026-03-31",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 16062500.0,
+  "distributed": 3493482.17,
+  "nav": 18902117.8,
+  "note": "English CSV portal export with metadata lines on top and QTD/YTD/ITD columns; US date 03/31/2026; distributions negative (-3493482.17), answer is the positive amount"
+}

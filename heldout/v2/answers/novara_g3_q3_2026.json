@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "NOV3",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 20000000.0,
+  "paid_in": 15110000.0,
+  "distributed": 2100000.0,
+  "nav": 18034559.21,
+  "note": "English xlsx roll-forward with Quarter/Year/Inception-to-date columns: paid-in and distributions are the inception-to-date column (distributions stored negative); commitment only in the text line 'Total commitment: EUR 20,000,000.00'"
+}

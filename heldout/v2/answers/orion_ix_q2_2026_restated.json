@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "paid-in capital USD 118,452,100.00 is far above the commitment of USD 30,000,000.00 (395 %)",
+  "note": "English markdown restatement for ORI9 at 2026-06-30"
+}

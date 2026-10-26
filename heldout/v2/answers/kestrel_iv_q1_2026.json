@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "KES4",
+  "period_end": "2026-03-31",
+  "currency": "EUR",
+  "commitment": 12500000.0,
+  "paid_in": 8750000.0,
+  "distributed": 1042300.0,
+  "nav": 9806442.19,
+  "note": "English text, € prefix, period stated as '1 Jan 2026 - 31 Mar 2026', two NAVs (prior and current quarter end): answer is the 31 Mar 2026 NAV"
+}

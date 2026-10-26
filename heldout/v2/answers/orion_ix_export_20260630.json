@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "ORI9",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 30000000.0,
+  "paid_in": 11845210.0,
+  "distributed": 0.0,
+  "nav": 12603377.91,
+  "note": "English single-row CSV export with snake_case column names; NAV column is ending_capital_balance"
+}

@@ -1,0 +1,28 @@
+MERIDIAN INFRASTRUCTURE DEBT III SCSp
+Capital Account Statement
+Quarter ended 30 September 2026
+
+Prepared for:  Northlake Private Debt I GmbH & Co. KG
+Prepared by:   Meridian Fund Administration (Luxembourg) S.a r.l.
+               6, avenue John F. Kennedy, L-1855 Luxembourg
+Date:          23 October 2026
+
+Statement currency: Euro (EUR)
+
+CAPITAL ACCOUNT ROLL-FORWARD (QUARTER)
+  Opening capital account at 30 June 2026          EUR    8,640,511.27
+  Capital contributions                            EUR    1,100,000.00
+  Distributions                                    EUR     (318,207.44)
+  Net investment income (1)                        EUR      112,600.12
+  Net change in unrealised gains/(losses)          EUR      (46,783.45)
+  Closing capital account at 30 September 2026     EUR    9,488,120.50
+
+COMMITMENT AND CUMULATIVE FIGURES (SINCE INCEPTION)
+  Commitment                                       EUR   22,000,000.00
+  Cumulative capital contributions                 EUR    9,900,000.00
+  Cumulative distributions                         EUR      715,402.33
+  Unfunded commitment                              EUR   12,100,000.00
+
+(1) Net investment income is shown after management fees of EUR 41,250.00 for the quarter.
+Distributions in the quarter comprise interest of EUR 218,207.44 and a return of capital of
+EUR 100,000.00.

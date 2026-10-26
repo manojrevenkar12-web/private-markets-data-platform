@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "FJD3",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 13652000.0,
+  "distributed": 7913000.0,
+  "nav": 9386000.0,
+  "note": "German text in Mio. EUR with three decimals and a decimal comma: '13,652' means EUR 13.652 m; quarter and cumulative columns"
+}

@@ -1,0 +1,269 @@
+{
+ "set": "v2",
+ "status": "heldout",
+ "run_at": "2026-10-26T17:55:36+00:00",
+ "statements": 30,
+ "accepted_and_read_right": {
+  "read_right": 14,
+  "of": 25,
+  "rejected_wrongly": 9,
+  "rate": 0.56
+ },
+ "rejected_as_expected": {
+  "rejected": 4,
+  "of": 5,
+  "rate": 0.8
+ },
+ "fields": {
+  "fund": {
+   "right": 24,
+   "of": 25,
+   "rate": 0.96
+  },
+  "period_end": {
+   "right": 23,
+   "of": 25,
+   "rate": 0.92
+  },
+  "currency": {
+   "right": 24,
+   "of": 25,
+   "rate": 0.96
+  },
+  "commitment": {
+   "right": 23,
+   "of": 25,
+   "rate": 0.92
+  },
+  "paid_in": {
+   "right": 18,
+   "of": 25,
+   "rate": 0.72
+  },
+  "distributed": {
+   "right": 23,
+   "of": 25,
+   "rate": 0.92
+  },
+  "nav": {
+   "right": 22,
+   "of": 25,
+   "rate": 0.88
+  }
+ },
+ "cases": [
+  {
+   "file": "KES4_Kapitalkonto_2026Q2.xlsx",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "aurora_buyout_viii_q2_2026.pdf",
+   "expect": "reject",
+   "outcome": "accepted"
+  },
+  {
+   "file": "aurora_q2-2026_capital_statement.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "aurora_vii_q1_2026_portal.csv",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "aurora_vii_q3_2026.md",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": [
+    "nav"
+   ]
+  },
+  {
+   "file": "bastion_ii_q2_2026.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "several_statements: 8 statements in one file: one per file is expected",
+   "wrong_fields": [
+    "fund",
+    "period_end",
+    "currency",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "bastion_sd_ii_31122025.pdf",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "crestline_dl_iv_2026-06-30.md",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "crestline_iv_q4_2025.pdf",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "fjord-sec-iii-2026-03-31.md",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "fjord_iii_2026-09-30.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "halvard_mid_market_ii_2026-06-30.pdf",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "halvard_mm2_monatsbericht_2026-05.txt",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "halvard_mm2_q3_2026.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "kestrel_iv_kapitalkonto_q3_2026.xlsx",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "kestrel_iv_q1_2026.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "lumen_v_2025q4.pdf",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "lumen_v_kapitalkonto_2026-06-30.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "meridian_iii_2026q2.xlsx",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "meridian_infra_debt_iii_q3_2026.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "northlake_venture_q2_2026_all_funds.csv",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "novara_g3_q3_2026.xlsx",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: commitment",
+   "wrong_fields": [
+    "commitment"
+   ]
+  },
+  {
+   "file": "novara_growth_iii_h1_2026.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "orion_ix_export_20260630.csv",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "orion_ix_q2_2026_restated.md",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "orion_ix_q4_2025.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end",
+   "wrong_fields": [
+    "period_end"
+   ]
+  },
+  {
+   "file": "spree_seed_ii_2025-09-30.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: distributed",
+   "wrong_fields": [
+    "distributed"
+   ]
+  },
+  {
+   "file": "spree_seed_ii_q1_2026.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "tidewater_climate_i_31032026.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "tidewater_cti_q3_2026.xlsx",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in, nav",
+   "wrong_fields": [
+    "paid_in",
+    "nav"
+   ]
+  }
+ ]
+}

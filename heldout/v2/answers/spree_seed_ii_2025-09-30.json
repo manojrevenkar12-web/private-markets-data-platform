@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "SPR2",
+  "period_end": "2025-09-30",
+  "currency": "EUR",
+  "commitment": 3000000.0,
+  "paid_in": 1350000.0,
+  "distributed": 0.0,
+  "nav": 1218733.5,
+  "note": "German semicolon CSV, decimal comma without thousands separators, German column names"
+}

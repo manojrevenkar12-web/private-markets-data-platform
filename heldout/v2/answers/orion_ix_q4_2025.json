@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "ORI9",
+  "period_end": "2025-12-31",
+  "currency": "USD",
+  "commitment": 30000000.0,
+  "paid_in": 10612700.0,
+  "distributed": 0.0,
+  "nav": 11089400.0,
+  "note": "English markdown, USD thousands with one decimal, date 'December 31, 2025'"
+}

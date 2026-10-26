@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "period end 31.05.2026 (31 May 2026) is not a quarter end",
+  "note": "German monthly statement for HAL2; all figures present and plausible"
+}

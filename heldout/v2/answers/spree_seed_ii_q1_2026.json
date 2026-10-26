@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "SPR2",
+  "period_end": "2026-03-31",
+  "currency": "EUR",
+  "commitment": 3000000.0,
+  "paid_in": 1650000.0,
+  "distributed": 0.0,
+  "nav": 1512904.77,
+  "note": "German markdown, Q1 and since-inception columns, opening balance row"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "CRE4",
+  "period_end": "2025-12-31",
+  "currency": "EUR",
+  "commitment": 40000000.0,
+  "paid_in": 28400000.0,
+  "distributed": 8112400.0,
+  "nav": 21860300.0,
+  "note": "English PDF, amounts in EUR thousands, quarter and cumulative columns"
+}

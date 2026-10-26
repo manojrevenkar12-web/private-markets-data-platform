@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "BAS2",
+  "period_end": "2025-12-31",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 12750000.0,
+  "distributed": 4388270.15,
+  "nav": 9104552.08,
+  "note": "German PDF letter, German numbers, distribution breakdown rows"
+}

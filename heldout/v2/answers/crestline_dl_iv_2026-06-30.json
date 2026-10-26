@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "CRE4",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 40000000.0,
+  "paid_in": 31200000.0,
+  "distributed": 9846113.4,
+  "nav": 23415902.65,
+  "note": "English markdown, ISO dates, distributions split into return of capital and income (answer is the total), NAV roll-forward with opening NAV at 2026-03-31"
+}

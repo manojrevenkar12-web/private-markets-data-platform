@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "CSV contains three statements (Lumen Ventures V, Spree Seed II, Tidewater Climate Tech I) in one file",
+  "note": "English CSV, one row per fund, all at 30/06/2026"
+}

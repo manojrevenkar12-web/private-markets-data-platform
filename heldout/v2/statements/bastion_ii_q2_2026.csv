@@ -1,0 +1,9 @@
+statement_type,fund,investor,period_end,currency,measure,basis,amount
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Commitment,ITD,15000000.00
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Contributions,QTD,375000.00
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Contributions,ITD,13125000.00
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Distributions,QTD,312114.75
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Distributions,ITD,5012644.90
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Management fee,QTD,-37500.00
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Unfunded commitment,ITD,1875000.00
+CAS,Bastion Senior Debt II SCSp,Northlake Private Debt I GmbH & Co. KG,2026-06-30,EUR,Capital account balance,Closing,9433118.27

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "HAL2",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 8000000.0,
+  "paid_in": 5224000.0,
+  "distributed": 1180250.0,
+  "nav": 5061904.1,
+  "note": "English PDF letter with figures in a two-column table, EUR prefix; a second date (31 March 2026) in the valuation note"
+}
