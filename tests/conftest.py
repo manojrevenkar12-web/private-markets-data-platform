@@ -56,6 +56,12 @@ def world(database: str, tmp_path_factory: pytest.TempPathFactory) -> Iterator[d
     os.environ["PMD_DATA"] = str(data)
     build(ROOT, quick=True, data=data)
     reset_database()
-    result = run("test_first")
+    # the world reads payments from the topic's file; the Kafka test publishes and consumes on its own
+    kafka = os.environ.pop("PMD_KAFKA_BOOTSTRAP", None)
+    try:
+        result = run("test_first")
+    finally:
+        if kafka:
+            os.environ["PMD_KAFKA_BOOTSTRAP"] = kafka
     yield {"data": data, "run": result}
     os.environ.pop("PMD_DATA", None)

@@ -27,6 +27,15 @@ def _h(prefix: str, value: str) -> str:
     return prefix + hmac.new(_key(), value.encode(), hashlib.sha256).hexdigest()[:16]
 
 
+def key_fingerprint() -> str:
+    """Identifies the pseudonymisation key without revealing it."""
+    return hmac.new(_key(), b"pmd-key-fingerprint", hashlib.sha256).hexdigest()[:16]
+
+
+class KeyChanged(RuntimeError):
+    """The database holds keys made with another pseudonymisation key."""
+
+
 def client_key(client_id: str) -> str:
     return _h("ck_", client_id.strip().upper())
 

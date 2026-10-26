@@ -26,11 +26,14 @@ def test_airflow_dag_is_generated_from_the_same_graph() -> None:
 @pytest.mark.airflow
 def test_airflow_loads_the_dag() -> None:
     pytest.importorskip("airflow")
-    from airflow.models.dagbag import DagBag
+    try:
+        from airflow.dag_processing.dagbag import DagBag  # Airflow 3.1 and later
+    except ImportError:  # pragma: no cover
+        from airflow.models.dagbag import DagBag
 
-    bag = DagBag(dag_folder=str(ROOT / "dags"), include_examples=False)
+    bag = DagBag(dag_folder=str(ROOT / "dags"))
     assert not bag.import_errors, bag.import_errors
-    dag = bag.get_dag("private_markets")
+    dag = bag.dags["private_markets"]  # get_dag() would ask the metadata database
     assert {t.task_id for t in dag.tasks} == {t.name for t in TASKS}
     for t in TASKS:
         assert {u.task_id for u in dag.get_task(t.name).upstream_list} == set(t.upstream)

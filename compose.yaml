@@ -1,0 +1,51 @@
+# docker compose up: PostgreSQL, Redpanda for the instant payment topic, one pipeline run on simulated sources,
+# then the API and console on http://localhost:8000. PMD_TODAY fixes the business date so the demo is stable.
+x-pmd: &pmd
+  build: .
+  environment:
+    PMD_DATABASE_URL: postgresql+psycopg://pmd:pmd@postgres:5432/pmd
+    PMD_KAFKA_BOOTSTRAP: redpanda:9092
+    PMD_TODAY: "2026-10-26"
+  volumes:
+    - pmd-data:/app/data
+    - pmd-target:/app/warehouse/target
+
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: pmd
+      POSTGRES_PASSWORD: pmd
+      POSTGRES_DB: pmd
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pmd"]
+      interval: 3s
+      retries: 20
+
+  redpanda:
+    image: redpandadata/redpanda:v24.2.7
+    command: >
+      redpanda start --mode dev-container --smp 1 --overprovisioned
+      --kafka-addr PLAINTEXT://0.0.0.0:9092 --advertise-kafka-addr PLAINTEXT://redpanda:9092
+    healthcheck:
+      test: ["CMD-SHELL", "rpk cluster health | grep -q 'Healthy:.*true'"]
+      interval: 3s
+      retries: 30
+
+  pipeline:
+    <<: *pmd
+    command: ["sh", "-c", "pmd-sim --root /app && python -m pmd_sim.publish --bootstrap redpanda:9092 --root /app && pmd run"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redpanda: { condition: service_healthy }
+    restart: "no"
+
+  api:
+    <<: *pmd
+    ports: ["8000:8000"]
+    depends_on:
+      pipeline: { condition: service_completed_successfully }
+
+volumes:
+  pmd-data:
+  pmd-target:

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any
+
 import pytest
 
 from pmd import privacy
@@ -26,3 +28,16 @@ def test_iban_checksum() -> None:
 def test_age_band() -> None:
     assert privacy.age_band(1980, 2026) == "40-49"
     assert privacy.age_band(1940, 2026) == "80+"
+
+
+def test_a_database_refuses_a_second_pseudonymisation_key(
+    world: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from pmd import db
+
+    db.bootstrap()  # the key it was loaded with: fine, and idempotent
+    monkeypatch.setenv("PMD_PSEUDONYM_KEY", "a-different-secret")
+    with pytest.raises(privacy.KeyChanged):
+        db.bootstrap()
+    stored = db.scalar("select fingerprint from ops.pseudonym_key")
+    assert stored != privacy.key_fingerprint() and "a-different-secret" not in stored

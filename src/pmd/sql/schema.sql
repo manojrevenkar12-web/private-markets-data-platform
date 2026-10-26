@@ -172,3 +172,11 @@ create table if not exists raw.target_funds (
 alter table ops.runs add column if not exists build jsonb;
 alter table ops.runs add column if not exists approved_by text;
 alter table ops.runs add column if not exists approval_note text;
+
+-- Which pseudonymisation key this database was loaded with, as a fingerprint (never the key). Loading with
+-- another key would give the same client a second key and split their history; bootstrap refuses instead.
+create table if not exists ops.pseudonym_key (
+  id integer primary key default 1 check (id = 1),
+  fingerprint text not null,
+  first_seen timestamptz not null default now()
+);

@@ -59,9 +59,22 @@ def begin() -> Iterator[Connection]:
 def bootstrap() -> None:
     """Creates the landing schemas, tables, roles and the reveal function. Idempotent."""
     ddl = resources.files("pmd").joinpath("sql/schema.sql").read_text(encoding="utf-8")
+    from .privacy import KeyChanged, key_fingerprint
+
+    fingerprint = key_fingerprint()
     with begin() as c:
         c.exec_driver_sql(ddl)
         c.exec_driver_sql(ROLES)
+        c.execute(
+            text("insert into ops.pseudonym_key (fingerprint) values (:f) on conflict (id) do nothing"),
+            {"f": fingerprint},
+        )
+        stored = c.execute(text("select fingerprint from ops.pseudonym_key")).scalar()
+    if stored != fingerprint:
+        raise KeyChanged(
+            "PMD_PSEUDONYM_KEY is not the key this database was loaded with: every client would get a second key. "
+            "Use the original key, or re-key the vault deliberately."
+        )
 
 
 def rows(sql: str, **params: Any) -> list[dict[str, Any]]:
