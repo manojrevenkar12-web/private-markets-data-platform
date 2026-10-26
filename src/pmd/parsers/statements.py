@@ -122,7 +122,9 @@ def _text_cells(text: str) -> list[str]:
         if not line or set(line) <= set("-=|:*_ "):
             continue
         # table rows in text or Markdown ("| Label | Value |"), tab or wide-space columns, dot leaders
-        parts = [p.strip(" *") for p in re.split(r"\s*\|\s*|\t|\s{3,}|\s*\.{3,}\s*|\s*…+\s*|\s+·\s+", line) if p.strip(" *")]
+        parts = [
+            p.strip(" *") for p in re.split(r"\s*\|\s*|\t|\s{3,}|\s*\.{3,}\s*|\s*…+\s*|\s+·\s+", line) if p.strip(" *")
+        ]
         for part in parts or [line]:
             out.extend(_split_label_value(part))
     return out
@@ -133,7 +135,10 @@ def _split_label_value(cell: str) -> list[str]:
     m = re.match(r"^([^:\d]*[A-Za-zÄÖÜäöüß)\]])\s*:\s*(.+)$", cell)
     if m and re.search(r"\d", m.group(2)):
         return [m.group(1).strip(), m.group(2).strip()]
-    m = re.match(r"^(.*?[A-Za-zÄÖÜäöüß)\]])\s+((?:[-(]?\s*(?:[A-Z]{3}|[€$£])\s*)?[-(]?\d[\d.,' ]*\)?(?:\s*(?:[A-Z]{3,4}|[€$£]))?)$", cell)
+    m = re.match(
+        r"^(.*?[A-Za-zÄÖÜäöüß)\]])\s+((?:[-(]?\s*(?:[A-Z]{3}|[€$£])\s*)?[-(]?\d[\d.,' ]*\)?(?:\s*(?:[A-Z]{3,4}|[€$£]))?)$",
+        cell,
+    )
     if m and not _looks_like_date(m.group(2)) and not YEAR.fullmatch(m.group(2).strip()):
         return [m.group(1).strip(), m.group(2).strip()]
     return [cell]
@@ -248,7 +253,7 @@ def classify(cell: str) -> Label | None:
 
 
 def _looks_like_date(raw: str) -> bool:
-    return parse_date(raw) is not None and not re.fullmatch(r"[-(]?[\d.,' ]+\)?", raw.strip()) or bool(
+    return (parse_date(raw) is not None and not re.fullmatch(r"[-(]?[\d.,' ]+\)?", raw.strip())) or bool(
         re.fullmatch(r"\d{1,2}[./]\d{1,2}[./]\d{2,4}|\d{4}-\d{2}-\d{2}", raw.strip())
     )
 
@@ -409,7 +414,12 @@ def parse_cells(cells: list[str], parser: str) -> Statement:
             nxt = cells[k]
             if labels[k] is not None and not _is_number_cell(nxt):
                 break
-            if lab.field in AMOUNT_FIELDS and not _is_number_cell(nxt) and not UNIT_TOKEN.match(nxt.strip()) and nxt.strip() not in ("-", "–"):
+            if (
+                lab.field in AMOUNT_FIELDS
+                and not _is_number_cell(nxt)
+                and not UNIT_TOKEN.match(nxt.strip())
+                and nxt.strip() not in ("-", "–")
+            ):
                 break  # another row's text: this label has no value of its own (a heading)
             if lab.field in AMOUNT_FIELDS and _is_number_cell(nxt):
                 # a period column and a cumulative column: the cumulative one is on the right
@@ -458,7 +468,9 @@ def parse_cells(cells: list[str], parser: str) -> Statement:
             # a roll-forward: "capital at 31 March 2026" is the closing NAV, "at 31 December 2025" the opening
             dated = [c for c in cands if c.label_date is not None]
             if dated:
-                cands = [c for c in dated if c.label_date == st.period_end] or [c for c in cands if c.label_date is None]
+                cands = [c for c in dated if c.label_date == st.period_end] or [
+                    c for c in cands if c.label_date is None
+                ]
         if not cands:
             continue
         best = min(cands, key=lambda c: (RANK[c.marker], -c.strength, c.position))
@@ -470,7 +482,9 @@ def parse_cells(cells: list[str], parser: str) -> Statement:
 
     cur = next((c for c in found if c.field == "currency"), None)
     st.currency = _currency(cur.raw) if cur else None
-    st.currency = st.currency or _currency(" ".join(c.raw for c in found if c.field in AMOUNT_FIELDS)) or _currency_words(doc)
+    st.currency = (
+        st.currency or _currency(" ".join(c.raw for c in found if c.field in AMOUNT_FIELDS)) or _currency_words(doc)
+    )
     stated_fund = next((c.raw for c in found if c.field == "fund"), None)
     st.fund = identify_fund(cells, stated_fund)
     if st.currency is None and st.fund:
