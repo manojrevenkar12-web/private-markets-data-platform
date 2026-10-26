@@ -122,17 +122,21 @@ def load_bank(base: Path | None = None) -> LoadReport:
                 },
             )
             entries, vault = [], {}
-            for e in stmt.entries:
-                ck = counterparty_key(e.counterparty_iban) if e.counterparty_iban else counterparty_key("UNKNOWN")
-                vault[ck] = {"k": ck, "n": e.counterparty_name, "i": e.counterparty_iban}
-                red, call, client = redact_remittance(e.remittance)
+            for entry in stmt.entries:
+                ck = (
+                    counterparty_key(entry.counterparty_iban)
+                    if entry.counterparty_iban
+                    else counterparty_key("UNKNOWN")
+                )
+                vault[ck] = {"k": ck, "n": entry.counterparty_name, "i": entry.counterparty_iban}
+                red, call, client = redact_remittance(entry.remittance)
                 entries.append(
                     {
-                        "r": e.bank_ref,
+                        "r": entry.bank_ref,
                         "f": reg.file_id,
                         "a": stmt.account_iban,
-                        "d": e.booking_date,
-                        "m": e.amount,
+                        "d": entry.booking_date,
+                        "m": entry.amount,
                         "ck": ck,
                         "rem": red,
                         "call": call,

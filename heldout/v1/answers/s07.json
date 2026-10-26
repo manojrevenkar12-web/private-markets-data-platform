@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "LUM5",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 7500000.0,
+  "paid_in": 5887500.0,
+  "distributed": 1092300.0,
+  "nav": 9416800.0,
+  "note": "English md, USD '000, QTD/ITD columns, US date 06/30/2026"
+}

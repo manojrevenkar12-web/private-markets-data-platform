@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "KES4",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 18240000.0,
+  "paid_in": 12403012.0,
+  "distributed": 1208312.45,
+  "nav": 13377054.18,
+  "note": "English txt, quarter and since-inception columns, code after amount"
+}

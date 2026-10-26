@@ -24,12 +24,14 @@ def today() -> dt.date:
     return dt.date.fromisoformat(os.environ["PMD_TODAY"]) if os.environ.get("PMD_TODAY") else TODAY
 
 
-def build(root: Path, seed: int = 2026, quick: bool = False) -> dict[str, Any]:
+def build(root: Path, seed: int = 2026, quick: bool = False, data: Path | None = None) -> dict[str, Any]:
+    """Writes data/landing and data/truth under `data` (default: <root>/data, or PMD_DATA)."""
     funds = yaml.safe_load((root / "config" / "funds.yaml").read_text(encoding="utf-8"))
+    data = data or (Path(os.environ["PMD_DATA"]) if os.environ.get("PMD_DATA") else root / "data")
     for sub in ("landing", "truth"):
-        shutil.rmtree(root / "data" / sub, ignore_errors=True)
+        shutil.rmtree(data / sub, ignore_errors=True)
     world = build_world(funds, today(), seed=seed, n_clients=110 if quick else 420)
-    return write_all(world, root, seed)
+    return write_all(world, data, seed)
 
 
 def main() -> None:

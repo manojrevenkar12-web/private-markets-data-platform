@@ -4,10 +4,13 @@ is generated from the same list, so the two can never disagree about what depend
 from __future__ import annotations
 
 import datetime as dt
+import json
 import re
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from typing import Any
+
+from sqlalchemy import text
 
 from . import db, ingest, publish, streaming, warehouse
 from .config import today
@@ -29,20 +32,31 @@ def new_run_id() -> str:
 
 def _build(ctx: RunContext) -> dict[str, Any]:
     res = warehouse.build(ctx.schema)
-    ctx.results["build"] = res
-    return {"ok": res.ok, "models": res.models, "tests": res.tests, "failures": res.failures}
+    out = {"ok": res.ok, "models": res.models, "tests": res.tests, "failures": res.failures}
+    # kept with the run, so the next task can read it even in another process (Airflow)
+    with db.begin() as c:
+        c.execute(
+            text(
+                """insert into ops.runs (run_id, build_schema, status, as_of, build)
+                   values (:r, :s, :st, :a, cast(:b as jsonb))
+                   on conflict (run_id) do update set status = excluded.status, build = excluded.build"""
+            ),
+            {
+                "r": ctx.run_id,
+                "s": ctx.schema,
+                "st": "built" if res.ok else "build_failed",
+                "a": today(),
+                "b": json.dumps(out, default=str),
+            },
+        )
+    return out
 
 
 def _gates(ctx: RunContext) -> dict[str, Any]:
-    res = ctx.results.get("build")
-    if res is None:  # a separate process (Airflow): read the build's outcome back from the schema
-        ok = bool(
-            db.scalar(
-                "select count(*) from information_schema.tables where table_schema = :s and table_name = 'fct_client_positions'",
-                s=ctx.schema,
-            )
-        )
-        res = warehouse.BuildResult(ctx.schema, ok)
+    stored = db.scalar("select build from ops.runs where run_id = :r", r=ctx.run_id) or {}
+    res = warehouse.BuildResult(
+        ctx.schema, bool(stored.get("ok")), stored.get("models", 0), stored.get("tests", 0), stored.get("failures", [])
+    )
     gates = publish.gates(ctx.schema, res.ok, res.failures)
     ctx.results["gates"] = gates
     blocked = [g.name for g in gates if g.blocks]

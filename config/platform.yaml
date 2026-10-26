@@ -17,9 +17,10 @@ gates:
     # NAV for that quarter is estimated until a person releases or replaces the statement.
     threshold: 0.40
     severity: hold_row
-  client_nav_drift:
-    # A client's published NAV may not move more than this share against the last publish unless a new
-    # statement or a restatement explains it.
+  nav_drift:
+    # A fund's NAV for a quarter clients have already seen may not move more than this share against the
+    # last publish unless a statement for that fund arrived since. Releasing a held statement does not count
+    # as new: the build waits for a second person (`pmd approve`).
     threshold: 0.25
     severity: block
   dbt_tests:

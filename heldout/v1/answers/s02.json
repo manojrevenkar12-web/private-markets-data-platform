@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "KES4",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 18240000.0,
+  "paid_in": 11673400.0,
+  "distributed": 1208300.0,
+  "nav": 12905800.0,
+  "note": "German xlsx, amounts in TEUR (numeric cells), quarter and since-inception columns"
+}

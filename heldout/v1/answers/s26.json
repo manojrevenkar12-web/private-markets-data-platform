@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "BAS2",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 10875000.0,
+  "distributed": 2541903.17,
+  "nav": 8807115.52,
+  "note": "German letter with ASCII table, EUR before 1.234,56"
+}

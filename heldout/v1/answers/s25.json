@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "TID1",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 6000000.0,
+  "paid_in": 2880000.0,
+  "distributed": 210000.0,
+  "nav": 2701522.36,
+  "note": "English txt, ISO dates; recallable distribution added back to remaining commitment (remaining != commitment - paid-in)"
+}

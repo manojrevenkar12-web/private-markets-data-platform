@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 19437512.0,
+  "distributed": 6102334.18,
+  "nav": 21884905.47,
+  "note": "English GP letter, label: value lines, $ before amounts, US date"
+}

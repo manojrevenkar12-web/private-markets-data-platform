@@ -87,32 +87,32 @@ def gates(schema: str, build_ok: bool, build_failures: list[dict[str, Any]]) -> 
     if not build_ok:
         return out
 
-    # client NAV drift against what clients see now, unless new statements explain it
+    # fund NAVs clients have already seen, moving without a new statement to explain it
     prev = published_schema()
     if prev and prev != schema:
-        threshold = cfg["client_nav_drift"]["threshold"]
-        last = db.scalar("select as_of from ops.runs where build_schema = :s", s=prev)
+        threshold = cfg["nav_drift"]["threshold"]
+        last = db.scalar("select max(finished_at) from ops.runs where build_schema = :s", s=prev)
         rows = db.rows(
-            f"""select n.feeder, n.quarter_end, n.nav_eur as new_nav, o.nav_eur as old_nav,
-                   (select count(*) from {schema}.int_statement_versions v join {schema}.stg_target_funds t using (fund)
-                     where t.feeder = n.feeder and v.received_on > :last) as new_statements
-                from {schema}.fct_feeder_nav n join {prev}.fct_feeder_nav o using (feeder, quarter_end)
-                where o.nav_eur <> 0 and abs(n.nav_eur - o.nav_eur) / abs(o.nav_eur) > :t""",
-            last=last or dt.date.min,
+            f"""select n.fund, n.quarter_end, n.nav_eur as new_nav, o.nav_eur as old_nav
+                from {schema}.fct_fund_nav n join {prev}.fct_fund_nav o using (fund, quarter_end)
+                where o.nav_eur <> 0 and abs(n.nav_eur - o.nav_eur) / abs(o.nav_eur) > :t
+                  and not exists (
+                    select 1 from ops.files f join raw.gp_statements s using (file_id)
+                    where s.fund = n.fund and f.registered_at > :last)""",
+            last=last or dt.datetime.min.replace(tzinfo=dt.UTC),
             t=threshold,
         )
-        unexplained = [r for r in rows if not r["new_statements"]]
         out.append(
             Gate(
-                "client_nav_drift",
-                cfg["client_nav_drift"]["severity"],
-                not unexplained,
-                f"no feeder NAV moved more than {threshold:.0%} without a new statement"
-                if not unexplained
+                "nav_drift",
+                cfg["nav_drift"]["severity"],
+                not rows,
+                f"no fund NAV moved more than {threshold:.0%} without a new statement"
+                if not rows
                 else "; ".join(
-                    f"{r['feeder']} {r['quarter_end']}: {r['old_nav']} -> {r['new_nav']}" for r in unexplained[:5]
+                    f"{r['fund']} {r['quarter_end']}: {r['old_nav']} -> {r['new_nav']} EUR" for r in rows[:5]
                 ),
-                len(unexplained),
+                len(rows),
             )
         )
 
@@ -188,7 +188,6 @@ def diff(old: str, new: str) -> dict[str, Any]:
     numeric column's total. The record a reviewer reads before trusting a change to the models."""
     out: dict[str, Any] = {}
     for mart, keys in MARTS.items():
-        k = ", ".join(keys)
         try:
             cols = db.rows(
                 "select column_name, data_type from information_schema.columns where table_schema = :s and table_name = :t order by ordinal_position",
@@ -246,6 +245,28 @@ def diff(old: str, new: str) -> dict[str, Any]:
 
 def _num(x: Any) -> Any:
     return float(x) if isinstance(x, Decimal) else x
+
+
+def approve(run_id: str, actor: str, note: str) -> dict[str, Any]:
+    """A second person publishes a build that only the drift gate stopped. Tests must have passed."""
+    run = db.rows("select build_schema, status, gates from ops.runs where run_id = :r", r=run_id)
+    if not run:
+        raise ValueError(f"no run {run_id}")
+    blocking = [g["name"] for g in run[0]["gates"] if not g["passed"] and g["severity"] == "block"]
+    if run[0]["status"] != "blocked" or blocking != ["nav_drift"]:
+        raise ValueError(
+            f"only a build blocked by nav_drift alone can be approved (status {run[0]['status']}, blocking {blocking})"
+        )
+    publish(run[0]["build_schema"])
+    with db.begin() as c:
+        c.execute(
+            text(
+                "update ops.runs set status = 'published', finished_at = now(), approved_by = :a, approval_note = :n "
+                "where run_id = :r"
+            ),
+            {"a": actor, "n": note, "r": run_id},
+        )
+    return {"run_id": run_id, "published": True, "approved_by": actor}
 
 
 def record(

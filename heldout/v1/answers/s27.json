@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "NOV3",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 12000000.0,
+  "paid_in": 8835000.0,
+  "distributed": 731045.8,
+  "nav": 10184662.07,
+  "note": "English CSV, US dates mm/dd/yyyy, plain numbers"
+}

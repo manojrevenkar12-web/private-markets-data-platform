@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "period end 15 May 2026 is not a quarter end",
+  "note": "German md interim statement at final closing; mentions the next quarter end 30.06.2026 only in prose"
+}

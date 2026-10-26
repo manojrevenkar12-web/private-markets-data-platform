@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "document has no NAV (it says the NAV will be reported separately)",
+  "note": "German md; commitment, paid-in and distributions are present"
+}

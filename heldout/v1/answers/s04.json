@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "HAL2",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 10000000.0,
+  "paid_in": 7250000.0,
+  "distributed": 1384906.72,
+  "nav": 8120557.09,
+  "note": "German txt, dotted label/value lines, 1.234,56 EUR"
+}

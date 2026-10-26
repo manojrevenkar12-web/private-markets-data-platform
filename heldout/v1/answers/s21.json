@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "FJD3",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 12465000.0,
+  "distributed": 5612000.0,
+  "nav": 9048000.0,
+  "note": "German md, Mio. EUR with three decimals and decimal comma (12,465 = 12.465 m)"
+}

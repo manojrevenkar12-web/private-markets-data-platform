@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2025-12-31",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 17810000.0,
+  "distributed": 4620000.0,
+  "nav": 20970000.0,
+  "note": "English md, USD m two decimals, Q4/FY/ITD columns"
+}

@@ -169,3 +169,6 @@ create table if not exists raw.target_funds (
   fund text primary key, feeder text not null, name text not null, gp text not null, region text not null,
   strategy text not null, currency text not null
 );
+alter table ops.runs add column if not exists build jsonb;
+alter table ops.runs add column if not exists approved_by text;
+alter table ops.runs add column if not exists approval_note text;

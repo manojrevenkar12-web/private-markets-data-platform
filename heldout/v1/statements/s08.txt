@@ -1,0 +1,29 @@
+Spree Seed II GmbH & Co. KG
+Geschäftsführende Kommanditistin: Spree Seed Management GmbH
+Torstraße 109, 10119 Berlin
+
+An: Northlake Venture III GmbH & Co. KG
+
+Berlin, 15. März 2026
+
+Kapitalkontoauszug zum 31.12.2025
+
+1. Entwicklung des Kapitalkontos im Geschäftsjahr 2025 (EUR)
+
+   Anfangsbestand 01.01.2025                      2.104.880,15
+   Einzahlungen                                     600.000,00
+   Ausschüttungen                                         0,00
+   Verwaltungsvergütung                             -75.000,00
+   Ergebnis aus Bewertung und Veräußerung           312.447,62
+   -----------------------------------------------------------
+   Endbestand 31.12.2025 (NAV)                    2.942.327,77
+
+2. Kumulierte Werte seit Auflegung (EUR)
+
+   Zeichnungsbetrag                               5.000.000,00
+   Einzahlungen kumuliert                         3.150.000,00
+   Ausschüttungen kumuliert                          48.212,00
+   Offene Einzahlungsverpflichtung                1.850.000,00
+
+Die Verwaltungsvergütung wird aus dem Kapitalkonto entnommen und ist nicht in den Einzahlungen
+enthalten. Die Angaben beruhen auf dem vorläufigen Jahresabschluss 2025.

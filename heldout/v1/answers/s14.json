@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "MER3",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 12500000.0,
+  "paid_in": 7031300.0,
+  "distributed": 912400.0,
+  "nav": 6640900.0,
+  "note": "German PDF, TEUR with one decimal, long German date"
+}

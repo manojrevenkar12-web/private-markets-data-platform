@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "CRE4",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 20000000.0,
+  "paid_in": 16420000.0,
+  "distributed": 3918774.06,
+  "nav": 13205448.91,
+  "note": "English txt, private debt, space thousands separator, dd/mm/yyyy; total distributions = interest + return of capital"
+}

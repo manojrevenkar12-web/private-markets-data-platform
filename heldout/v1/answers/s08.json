@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "SPR2",
+  "period_end": "2025-12-31",
+  "currency": "EUR",
+  "commitment": 5000000.0,
+  "paid_in": 3150000.0,
+  "distributed": 48212.0,
+  "nav": 2942327.77,
+  "note": "German txt: annual roll-forward (period figures) plus separate cumulative block; NAV = Endbestand"
+}

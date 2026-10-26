@@ -1,0 +1,348 @@
+{
+ "set": "v1",
+ "status": "heldout",
+ "run_at": "2026-10-26T17:37:40+00:00",
+ "statements": 30,
+ "accepted_and_read_right": {
+  "read_right": 2,
+  "of": 25,
+  "rejected_wrongly": 23,
+  "rate": 0.08
+ },
+ "rejected_as_expected": {
+  "rejected": 5,
+  "of": 5,
+  "rate": 1.0
+ },
+ "fields": {
+  "fund": {
+   "right": 23,
+   "of": 25,
+   "rate": 0.92
+  },
+  "period_end": {
+   "right": 15,
+   "of": 25,
+   "rate": 0.6
+  },
+  "currency": {
+   "right": 23,
+   "of": 25,
+   "rate": 0.92
+  },
+  "commitment": {
+   "right": 18,
+   "of": 25,
+   "rate": 0.72
+  },
+  "paid_in": {
+   "right": 6,
+   "of": 25,
+   "rate": 0.24
+  },
+  "distributed": {
+   "right": 8,
+   "of": 25,
+   "rate": 0.32
+  },
+  "nav": {
+   "right": 11,
+   "of": 25,
+   "rate": 0.44
+  }
+ },
+ "cases": [
+  {
+   "file": "s01.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end, paid_in",
+   "wrong_fields": [
+    "period_end",
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s02.xlsx",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s03.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end, nav",
+   "wrong_fields": [
+    "period_end",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s04.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: commitment, paid_in",
+   "wrong_fields": [
+    "commitment",
+    "paid_in"
+   ]
+  },
+  {
+   "file": "s05.txt",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "s06.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in, nav",
+   "wrong_fields": [
+    "paid_in",
+    "nav"
+   ]
+  },
+  {
+   "file": "s07.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in, nav",
+   "wrong_fields": [
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s08.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: nav",
+   "wrong_fields": [
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s09.pdf",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end",
+   "wrong_fields": [
+    "period_end",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s10.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "several_statements: 11 rows: one statement per file is expected",
+   "wrong_fields": [
+    "fund",
+    "period_end",
+    "currency",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s11.csv",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "s12.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s13.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end",
+   "wrong_fields": [
+    "period_end",
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s14.pdf",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s15.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "several_statements: 12 rows: one statement per file is expected",
+   "wrong_fields": [
+    "fund",
+    "period_end",
+    "currency",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s16.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end, paid_in",
+   "wrong_fields": [
+    "period_end",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s17.md",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "s18.xlsx",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in, nav",
+   "wrong_fields": [
+    "paid_in",
+    "nav"
+   ]
+  },
+  {
+   "file": "s19.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: nav",
+   "wrong_fields": [
+    "nav"
+   ]
+  },
+  {
+   "file": "s20.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "unfunded_adds_up: 10000000.00 - 500000.00 != 2250000.00",
+   "wrong_fields": [
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s21.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "unfunded_adds_up: 15000000.00 - 315000.00 != 2535000.00",
+   "wrong_fields": [
+    "paid_in",
+    "distributed"
+   ]
+  },
+  {
+   "file": "s22.txt",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "s23.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: nav",
+   "wrong_fields": [
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s24.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end, commitment, paid_in, distributed",
+   "wrong_fields": [
+    "period_end",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  },
+  {
+   "file": "s25.txt",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: paid_in",
+   "wrong_fields": [
+    "paid_in"
+   ]
+  },
+  {
+   "file": "s26.txt",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "s27.csv",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end",
+   "wrong_fields": [
+    "period_end"
+   ]
+  },
+  {
+   "file": "s28.md",
+   "expect": "reject",
+   "outcome": "rejected"
+  },
+  {
+   "file": "s29.xlsx",
+   "expect": "accept",
+   "outcome": "accepted",
+   "wrong_fields": []
+  },
+  {
+   "file": "s30.md",
+   "expect": "accept",
+   "outcome": "rejected",
+   "why": "required_fields: missing: period_end, paid_in",
+   "wrong_fields": [
+    "period_end",
+    "commitment",
+    "paid_in",
+    "distributed",
+    "nav"
+   ]
+  }
+ ]
+}

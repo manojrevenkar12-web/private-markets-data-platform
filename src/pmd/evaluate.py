@@ -49,8 +49,8 @@ def statements(schema: str, base: Path | None = None) -> dict[str, Any]:
         f"""select c.fund, c.period_end, c.currency, c.commitment, c.paid_in, c.distributed, c.nav, c.unit_scale
             from {schema}.int_statement_checks c where not c.held and c.version = c.versions"""
     )
-    fields = Counter()
-    right = Counter()
+    fields: Counter[str] = Counter()
+    right: Counter[str] = Counter()
     wrong: list[dict[str, Any]] = []
     for r in loaded:
         t = truth.get((r["fund"], r["period_end"].isoformat()))
@@ -103,12 +103,16 @@ def planted(schema: str, base: Path | None = None) -> dict[str, Any]:
         for r in db.rows(f"select distinct call_id, due_date from {schema}.fct_payment_status")
     }
     grace = settings()["reconciliation"]["overdue_grace_days"]
+    booked = {r["bank_ref"] for r in db.rows("select bank_ref from raw.bank_entries")}
     for p in w["planted"]:
         k = p["kind"]
         # money paid wrongly shows at once; money not paid yet only after the due date and the grace period
         open_call = "call" in p and p["call"] in due and due[p["call"]] + dt.timedelta(days=grace) >= today()
         if open_call and k in ("short", "unpaid", "no_reference", "wrong_reference", "late"):
             by_kind.setdefault(k, Counter())["not_due_yet"] += 1  # the call is still open: nothing to find yet
+            continue
+        if p.get("payment") and p["payment"] not in booked:
+            by_kind.setdefault(k, Counter())["not_booked_yet"] += 1  # only the instant notification so far
             continue
         if k in PAYMENT_BREAK:
             key = (PAYMENT_BREAK[k], client_key(p["client"]), p["call"])

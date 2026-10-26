@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "CSV contains three statements (SPR2, NOV3, TID1) in one file",
+  "note": "English CSV, each row is individually valid"
+}

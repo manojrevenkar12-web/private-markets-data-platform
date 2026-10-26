@@ -1,0 +1,25 @@
+Tidewater Climate Tech I GmbH & Co. KG
+c/o Tidewater Ventures GmbH, Große Elbstraße 145, 22767 Hamburg
+
+QUARTERLY CAPITAL ACCOUNT STATEMENT
+Period end: 2026-09-30         Statement date: 2026-11-04         Currency: EUR
+
+Investor: Northlake Venture III GmbH & Co. KG
+
+A. Commitment
+   Commitment                                    EUR   6,000,000.00
+   Contributions since inception                 EUR   2,880,000.00
+   Remaining commitment (1)                      EUR   3,330,000.00
+
+B. Cash flows in Q3 2026
+   Capital call no. 7 (14 Aug 2026)              EUR     540,000.00
+   Distribution no. 1 (22 Sep 2026) (1)          EUR     210,000.00
+   Management fee Q3 2026 (2)                    EUR      30,000.00
+
+C. Since inception
+   Distributions                                 EUR     210,000.00
+   Net asset value as at 30 September 2026       EUR   2,701,522.36
+
+(1) The distribution of EUR 210,000.00 is recallable and has been added back to the remaining
+    commitment.
+(2) 2.0% p.a. on commitment, included in contributions.

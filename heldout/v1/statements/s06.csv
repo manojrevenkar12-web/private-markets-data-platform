@@ -1,0 +1,2 @@
+gp_fund_id,fund_legal_name,investor_legal_name,as_of_date,ccy,total_commitment,contributions_qtd,contributions_itd,distributions_qtd,distributions_itd,mgmt_fee_qtd,ending_capital_balance,unfunded_commitment,report_date
+OGP-IX-LP,"Orion Global Partners IX, L.P.","Northlake Private Equity V GmbH & Co. KG",2026-09-30,USD,40000000.00,3200000.00,14800000.00,0.00,0.00,-150000.00,16211903.55,25200000.00,2026-11-12

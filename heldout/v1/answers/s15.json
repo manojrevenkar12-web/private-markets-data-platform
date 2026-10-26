@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "AUR7",
+  "period_end": "2026-09-30",
+  "currency": "USD",
+  "commitment": 25000000.0,
+  "paid_in": 20250012.0,
+  "distributed": 7480111.92,
+  "nav": 21402610.03,
+  "note": "English two-column Field,Value CSV, 'USD 1,234.56' quoted values"
+}

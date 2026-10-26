@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "CRE4",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 20000000.0,
+  "paid_in": 17020000.0,
+  "distributed": 4512330.88,
+  "nav": 13051229.7,
+  "note": "English CSV with quoted 1,234.56 values; distributions shown negative in parentheses, answer is positive"
+}

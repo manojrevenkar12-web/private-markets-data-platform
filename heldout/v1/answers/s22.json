@@ -1,0 +1,5 @@
+{
+  "expect": "reject",
+  "reason": "paid-in capital EUR 48,750,000.00 is 9.75 times the commitment of EUR 5,000,000.00",
+  "note": "English txt; otherwise well-formed"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "SPR2",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 5000000.0,
+  "paid_in": 3450000.0,
+  "distributed": 131905.55,
+  "nav": 3388746.19,
+  "note": "English txt, € symbol before amounts, dotted leaders"
+}

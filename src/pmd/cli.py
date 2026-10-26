@@ -5,9 +5,11 @@ pmd load                        only the loaders
 pmd build --schema S            only dbt, into schema S
 pmd diff OLD NEW                what changed between two builds
 pmd evaluate [--schema S]       the platform against the simulated world's truth
+pmd heldout v1                  scores a held-out set of statements (first run recorded once)
 pmd status                      the last runs and their gates
 pmd release FILE_ID --by --note release a held statement
 pmd resolve BREAK_ID --by --note
+pmd approve RUN_ID --by --note  publish a build only the drift gate stopped (second person)
 pmd serve [--port 8000]         the API and the console
 pmd task NAME --run-id R        one task of the graph (Airflow calls this)
 """
@@ -38,6 +40,8 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("new")
     e = sub.add_parser("evaluate")
     e.add_argument("--schema")
+    h = sub.add_parser("heldout")
+    h.add_argument("set")
     sub.add_parser("status")
     r = sub.add_parser("release")
     r.add_argument("file_id", type=int)
@@ -47,6 +51,10 @@ def main(argv: list[str] | None = None) -> int:
     rs.add_argument("break_id")
     rs.add_argument("--by", required=True)
     rs.add_argument("--note", required=True)
+    ap_ = sub.add_parser("approve")
+    ap_.add_argument("run_id")
+    ap_.add_argument("--by", required=True)
+    ap_.add_argument("--note", required=True)
     s = sub.add_parser("serve")
     s.add_argument("--port", type=int, default=8000)
     s.add_argument("--host", default="127.0.0.1")
@@ -77,9 +85,9 @@ def main(argv: list[str] | None = None) -> int:
     elif args.cmd == "build":
         from .warehouse import build
 
-        res = build(args.schema)
-        _print(res.__dict__)
-        return 0 if res.ok else 1
+        built = build(args.schema)
+        _print(built.__dict__)
+        return 0 if built.ok else 1
     elif args.cmd == "diff":
         from .publish import diff
 
@@ -89,6 +97,18 @@ def main(argv: list[str] | None = None) -> int:
         from .publish import published_schema
 
         _print(evaluate(args.schema or published_schema() or "serving"))
+    elif args.cmd == "heldout":
+        from .heldout import score
+
+        res = score(args.set)
+        a, r = res["accepted_and_read_right"], res["rejected_as_expected"]
+        print(
+            f"{res['statements']} statements: {a['read_right']}/{a['of']} read right, {r['rejected']}/{r['of']} rejected as expected"
+        )
+        for f, v in res["fields"].items():
+            print(f"  {f}: {v['right']}/{v['of']}")
+        if res.get("recorded_as_first_run"):
+            print(f"recorded as the first run of {args.set}")
     elif args.cmd == "status":
         _print(
             db.rows(
@@ -109,6 +129,10 @@ def main(argv: list[str] | None = None) -> int:
                 {"b": args.break_id, "a": args.by, "n": args.note},
             )
         print("resolved; the next run shows it")
+    elif args.cmd == "approve":
+        from .publish import approve
+
+        _print(approve(args.run_id, args.by, args.note))
     elif args.cmd == "serve":
         import uvicorn
 

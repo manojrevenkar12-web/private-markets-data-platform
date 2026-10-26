@@ -23,7 +23,20 @@ from typing import Any
 
 from .world import TargetQuarter, World, business_day
 
-MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+MONTHS_EN = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+]
 
 
 def _en(x: Decimal) -> str:
@@ -280,10 +293,10 @@ def _el(etree: Any, ns: str, tag: str, kids: tuple[Any, ...], text: str | None, 
 # --------------------------------------------------------------------------- everything
 
 
-def write_all(w: World, root: Path, seed: int) -> dict[str, int]:
+def write_all(w: World, data: Path, seed: int) -> dict[str, int]:
     rnd = random.Random(f"{seed}-writers")
-    land = root / "data" / "landing"
-    truth = root / "data" / "truth"
+    land = data / "landing"
+    truth = data / "truth"
     for sub in ("gp_statements", "bank", "crm", "ops", "market", "events"):
         (land / sub).mkdir(parents=True, exist_ok=True)
     truth.mkdir(parents=True, exist_ok=True)
@@ -303,7 +316,7 @@ def _write_statements(w: World, out: Path, truth: Path, rnd: random.Random) -> i
     feeders = w.funds["feeders"]
     rows: list[dict[str, Any]] = []
     n = 0
-    latest_due = {}
+    latest_due: dict[str, dt.date] = {}
     for tq in w.target_quarters:
         if tq.period_end < w.today - dt.timedelta(days=90):
             latest_due[tq.fund] = max(latest_due.get(tq.fund, tq.period_end), tq.period_end)
@@ -412,12 +425,10 @@ def _write_bank(w: World, out: Path) -> int:
         for p in w.payments:
             if p.feeder == fid:
                 by_day.setdefault(p.booked, []).append(p)
-        seq = 0
-        for day in sorted(by_day):
+        for seq, day in enumerate(sorted(by_day), 1):
             arrives = business_day(day + dt.timedelta(days=1))
             if arrives > w.today:
                 break
-            seq += 1
             entries = by_day[day]
             (acct / f"camt053_{iban[-6:]}_{day:%Y%m%d}.xml").write_bytes(camt053(iban, day, balance, entries, seq))
             balance += sum((e.amount for e in entries), Decimal(0))
@@ -513,8 +524,8 @@ def _write_crm_ops_market(w: World, land: Path) -> None:
     with (land / "ops" / "commitments.csv").open("w", newline="", encoding="utf-8") as fh:
         cw = csv.writer(fh)
         cw.writerow(["subscription_id", "client_id", "feeder", "amount_eur", "signed_at"])
-        for c in w.commitments:
-            cw.writerow([c.id, c.client, c.feeder, f"{c.amount:.2f}", c.signed_at])
+        for cm in w.commitments:
+            cw.writerow([cm.id, cm.client, cm.feeder, f"{cm.amount:.2f}", cm.signed_at])
     with (land / "ops" / "capital_calls.csv").open("w", newline="", encoding="utf-8") as fh:
         cw = csv.writer(fh)
         cw.writerow(["call_id", "feeder", "notice_date", "due_date", "percent_of_commitment"])
@@ -524,9 +535,9 @@ def _write_crm_ops_market(w: World, land: Path) -> None:
     with (land / "ops" / "distributions.csv").open("w", newline="", encoding="utf-8") as fh:
         cw = csv.writer(fh)
         cw.writerow(["distribution_id", "feeder", "pay_date", "percent_of_commitment"])
-        for d in w.feeder_distributions:
-            if d.pay_date <= w.today:
-                cw.writerow([d.id, d.feeder, d.pay_date, f"{d.percent:.2f}"])
+        for fd in w.feeder_distributions:
+            if fd.pay_date <= w.today:
+                cw.writerow([fd.id, fd.feeder, fd.pay_date, f"{fd.percent:.2f}"])
     with (land / "ops" / "target_commitments.csv").open("w", newline="", encoding="utf-8") as fh:
         cw = csv.writer(fh)
         cw.writerow(["feeder", "fund", "currency", "commitment"])

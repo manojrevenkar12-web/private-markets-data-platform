@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "FJD3",
+  "period_end": "2026-03-31",
+  "currency": "EUR",
+  "commitment": 15000000.0,
+  "paid_in": 12150000.0,
+  "distributed": 4906337.8,
+  "nav": 9517221.97,
+  "note": "English md roll-forward: period figures in one table, cumulative in another; NAV = closing partner's capital"
+}

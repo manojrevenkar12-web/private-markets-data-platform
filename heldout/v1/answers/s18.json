@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "ORI9",
+  "period_end": "2026-06-30",
+  "currency": "USD",
+  "commitment": 40000000.0,
+  "paid_in": 11600000.0,
+  "distributed": 0.0,
+  "nav": 12744018.2,
+  "note": "English xlsx, quarter and ITD columns with numeric cells, commitment block below"
+}

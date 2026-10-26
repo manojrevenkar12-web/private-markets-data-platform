@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "ORI9",
+  "period_end": "2026-09-30",
+  "currency": "USD",
+  "commitment": 40000000.0,
+  "paid_in": 14800000.0,
+  "distributed": 0.0,
+  "nav": 16211903.55,
+  "note": "English CSV export, one row, GP column names, plain numbers, ISO dates"
+}

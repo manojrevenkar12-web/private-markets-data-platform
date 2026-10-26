@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "TID1",
+  "period_end": "2026-06-30",
+  "currency": "EUR",
+  "commitment": 6000000.0,
+  "paid_in": 2340000.0,
+  "distributed": 0.0,
+  "nav": 2198615.4,
+  "note": "German semicolon CSV, Position;Betrag;Währung rows, decimal comma"
+}

@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "MER3",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 12500000.0,
+  "paid_in": 7656300.0,
+  "distributed": 1105900.0,
+  "nav": 7121400.0,
+  "note": "English xlsx, labels col A and values col D, EUR '000, period end is a real date cell"
+}

@@ -15,8 +15,137 @@ from dataclasses import dataclass, field
 from decimal import ROUND_HALF_UP, Decimal
 from typing import Any
 
-FIRST_NAMES = ["Anna", "Lena", "Marie", "Sophie", "Laura", "Julia", "Hannah", "Lea", "Sarah", "Katharina", "Johanna", "Clara", "Paula", "Emma", "Mia", "Leonie", "Nina", "Eva", "Jonas", "Lukas", "Leon", "Felix", "Maximilian", "Paul", "Elias", "Noah", "Ben", "Finn", "Moritz", "Julian", "Tim", "David", "Jan", "Philipp", "Niklas", "Alexander", "Sebastian", "Tobias", "Florian", "Christian", "Matthias", "Stefan", "Andreas", "Thomas", "Michael", "Markus", "Daniel", "Ayse", "Mehmet", "Elif", "Can", "Sofia", "Luca", "Marco", "Giulia", "Pierre", "Camille", "Olga", "Piotr", "Agnieszka", "Lars", "Ingrid", "Henrik", "Priya", "Arjun"]
-LAST_NAMES = ["Müller", "Schmidt", "Schneider", "Fischer", "Weber", "Meyer", "Wagner", "Becker", "Schulz", "Hoffmann", "Koch", "Richter", "Klein", "Wolf", "Schröder", "Neumann", "Schwarz", "Braun", "Zimmermann", "Hofmann", "Hartmann", "Krüger", "Lange", "Werner", "Krause", "Lehmann", "Köhler", "Maier", "Herrmann", "König", "Walter", "Mayer", "Huber", "Kaiser", "Fuchs", "Peters", "Lang", "Scholz", "Möller", "Weiß", "Jung", "Hahn", "Vogel", "Friedrich", "Keller", "Günther", "Frank", "Berger", "Winkler", "Roth", "Beck", "Lorenz", "Baumann", "Franke", "Albrecht", "Yilmaz", "Kaya", "Rossi", "Dubois", "Nowak", "Larsen", "Sharma"]
+FIRST_NAMES = [
+    "Anna",
+    "Lena",
+    "Marie",
+    "Sophie",
+    "Laura",
+    "Julia",
+    "Hannah",
+    "Lea",
+    "Sarah",
+    "Katharina",
+    "Johanna",
+    "Clara",
+    "Paula",
+    "Emma",
+    "Mia",
+    "Leonie",
+    "Nina",
+    "Eva",
+    "Jonas",
+    "Lukas",
+    "Leon",
+    "Felix",
+    "Maximilian",
+    "Paul",
+    "Elias",
+    "Noah",
+    "Ben",
+    "Finn",
+    "Moritz",
+    "Julian",
+    "Tim",
+    "David",
+    "Jan",
+    "Philipp",
+    "Niklas",
+    "Alexander",
+    "Sebastian",
+    "Tobias",
+    "Florian",
+    "Christian",
+    "Matthias",
+    "Stefan",
+    "Andreas",
+    "Thomas",
+    "Michael",
+    "Markus",
+    "Daniel",
+    "Ayse",
+    "Mehmet",
+    "Elif",
+    "Can",
+    "Sofia",
+    "Luca",
+    "Marco",
+    "Giulia",
+    "Pierre",
+    "Camille",
+    "Olga",
+    "Piotr",
+    "Agnieszka",
+    "Lars",
+    "Ingrid",
+    "Henrik",
+    "Priya",
+    "Arjun",
+]
+LAST_NAMES = [
+    "Müller",
+    "Schmidt",
+    "Schneider",
+    "Fischer",
+    "Weber",
+    "Meyer",
+    "Wagner",
+    "Becker",
+    "Schulz",
+    "Hoffmann",
+    "Koch",
+    "Richter",
+    "Klein",
+    "Wolf",
+    "Schröder",
+    "Neumann",
+    "Schwarz",
+    "Braun",
+    "Zimmermann",
+    "Hofmann",
+    "Hartmann",
+    "Krüger",
+    "Lange",
+    "Werner",
+    "Krause",
+    "Lehmann",
+    "Köhler",
+    "Maier",
+    "Herrmann",
+    "König",
+    "Walter",
+    "Mayer",
+    "Huber",
+    "Kaiser",
+    "Fuchs",
+    "Peters",
+    "Lang",
+    "Scholz",
+    "Möller",
+    "Weiß",
+    "Jung",
+    "Hahn",
+    "Vogel",
+    "Friedrich",
+    "Keller",
+    "Günther",
+    "Frank",
+    "Berger",
+    "Winkler",
+    "Roth",
+    "Beck",
+    "Lorenz",
+    "Baumann",
+    "Franke",
+    "Albrecht",
+    "Yilmaz",
+    "Kaya",
+    "Rossi",
+    "Dubois",
+    "Nowak",
+    "Larsen",
+    "Sharma",
+]
 CITIES = [
     ("10115", "Berlin"),
     ("20095", "Hamburg"),
@@ -33,7 +162,18 @@ CITIES = [
     ("8001", "Zürich"),
     ("1010", "Wien"),
 ]
-STREETS = ["Hauptstraße", "Bahnhofstraße", "Gartenstraße", "Lindenallee", "Schillerstraße", "Goethestraße", "Parkweg", "Bergstraße", "Ringstraße", "Kastanienallee"]
+STREETS = [
+    "Hauptstraße",
+    "Bahnhofstraße",
+    "Gartenstraße",
+    "Lindenallee",
+    "Schillerstraße",
+    "Goethestraße",
+    "Parkweg",
+    "Bergstraße",
+    "Ringstraße",
+    "Kastanienallee",
+]
 
 # How each strategy behaves per quarter: mean and spread of the return, how fast capital is called
 # (quarters for the call rate to fall by e), when distributions start (quarters) and how much NAV they return.
@@ -199,7 +339,7 @@ def _person(rnd: random.Random, i: int, start: dt.date, end: dt.date) -> Client:
     first, last = rnd.choice(FIRST_NAMES), rnd.choice(LAST_NAMES)
     plz, city = rnd.choice(CITIES)
     country = "CH" if city == "Zürich" else "AT" if city == "Wien" else "DE"
-    ascii_last = last.translate(str.maketrans({"ü": "ue", "ö": "oe", "ä": "ae", "ß": "ss"})).lower()
+    ascii_last = last.replace("ü", "ue").replace("ö", "oe").replace("ä", "ae").replace("ß", "ss").lower()
     span = max(1, (end - start).days)
     return Client(
         id=f"C-{i:06d}",
@@ -310,7 +450,7 @@ def _simulate_target(
 
 def _feeder_cash(w: World, rnd: random.Random) -> None:
     """The feeder calls its clients ahead of the target funds' calls and passes distributions on."""
-    for fid, f in w.funds["feeders"].items():
+    for fid in w.funds["feeders"]:
         total = sum((c.amount for c in w.commitments if c.feeder == fid), Decimal(0))
         if total == 0:
             continue
@@ -403,8 +543,8 @@ def _client_payments(w: World, rnd: random.Random) -> None:
             anomaly = None
             r = rnd.random()
             acc = 0.0
-            for name, p in ANOMALIES:
-                acc += p
+            for name, prob in ANOMALIES:
+                acc += prob
                 if r < acc:
                     anomaly = name
                     break

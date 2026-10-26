@@ -1,0 +1,11 @@
+{
+  "expect": "accept",
+  "fund": "HAL2",
+  "period_end": "2026-09-30",
+  "currency": "EUR",
+  "commitment": 10000000.0,
+  "paid_in": 7750000.0,
+  "distributed": 2000106.72,
+  "nav": 7902330.64,
+  "note": "English md, € before amounts, quarter vs since-inception columns"
+}
