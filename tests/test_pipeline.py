@@ -161,7 +161,7 @@ def test_xirr_matches_an_independent_calculation(world: dict[str, Any]) -> None:
         dates = sorted(d0 + dt.timedelta(days=rnd.randint(0, 1200)) for _ in range(5))
         amounts = [-rnd.uniform(1000, 5000) for _ in range(4)] + [rnd.uniform(5000, 30000)]
 
-        def npv(r: float) -> float:
+        def npv(r: float, dates: list = dates, amounts: list = amounts) -> float:  # type: ignore[type-arg]
             return sum(a / (1 + r) ** ((d - dates[0]).days / 365) for d, a in zip(dates, amounts, strict=True))
 
         lo, hi = -0.99, 10.0

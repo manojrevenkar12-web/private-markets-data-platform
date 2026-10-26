@@ -41,8 +41,8 @@ A statement states, at least:
 
 ## What to write
 
-Write **30 statements** into `heldout/v1/statements/`, one statement per file, and one answer key per file
-in `heldout/v1/answers/` with the same file stem and `.json`.
+Write **30 statements** into `heldout/<set>/statements/` (the set you were given, e.g. `v2`), one statement
+per file, and one answer key per file in `heldout/<set>/answers/` with the same file stem and `.json`.
 
 Vary them the way real managers do. Use your own wording and layouts; do not copy one template thirty times.
 
@@ -92,5 +92,5 @@ All amounts in full units of the currency (a statement in thousands showing 13,4
 { "expect": "reject", "reason": "period end 15 May 2026 is not a quarter end", "note": "..." }
 ```
 
-When you are done, write `heldout/v1/README.md` listing the files and anything a scorer should know, and
+When you are done, write `heldout/<set>/README.md` listing the files and anything a scorer should know, and
 report back how many files you wrote in each format and language and which ones should be rejected.

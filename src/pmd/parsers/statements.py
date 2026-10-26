@@ -119,12 +119,28 @@ def _text_cells(text: str) -> list[str]:
     out: list[str] = []
     for line in text.splitlines():
         line = line.strip().strip("|").strip()
-        if not line or set(line) <= set("-=|: "):
+        if not line or set(line) <= set("-=|:*_ "):
             continue
-        # table rows in text or Markdown: "| Label | Value |"
-        parts = [p.strip() for p in re.split(r"\s*\|\s*|\t|\s{3,}", line) if p.strip()]
-        out.extend(parts or [line])
+        # table rows in text or Markdown ("| Label | Value |"), tab or wide-space columns, dot leaders
+        parts = [p.strip(" *") for p in re.split(r"\s*\|\s*|\t|\s{3,}|\s*\.{3,}\s*|\s*…+\s*|\s+·\s+", line) if p.strip(" *")]
+        for part in parts or [line]:
+            out.extend(_split_label_value(part))
     return out
+
+
+def _split_label_value(cell: str) -> list[str]:
+    """'Commitment: 1,000.00' -> ['Commitment', '1,000.00']; a cell that is only a label or a value stays one."""
+    m = re.match(r"^([^:\d]*[A-Za-zÄÖÜäöüß)\]])\s*:\s*(.+)$", cell)
+    if m and re.search(r"\d", m.group(2)):
+        return [m.group(1).strip(), m.group(2).strip()]
+    m = re.match(r"^(.*?[A-Za-zÄÖÜäöüß)\]])\s+((?:[-(]?\s*(?:[A-Z]{3}|[€$£])\s*)?[-(]?\d[\d.,' ]*\)?(?:\s*(?:[A-Z]{3,4}|[€$£]))?)$", cell)
+    if m and not _looks_like_date(m.group(2)) and not YEAR.fullmatch(m.group(2).strip()):
+        return [m.group(1).strip(), m.group(2).strip()]
+    return [cell]
+
+
+YEAR = re.compile(r"(19|20)\d{2}")
+UNIT_TOKEN = re.compile(r"(?i)^(?:[A-Z]{3}|[€$£]|teur|tusd|mio\.?|in tsd\.?|k|m|'000|000s)$")
 
 
 def _xlsx_cells(path: Path) -> list[str]:
@@ -152,20 +168,23 @@ def _xlsx_cells(path: Path) -> list[str]:
 def _csv_cells(text: str) -> list[str]:
     sample = text[:2048]
     try:
-        dialect = csv.Sniffer().sniff(sample, delimiters=",;\t|")
-        delim = dialect.delimiter
+        delim = csv.Sniffer().sniff(sample, delimiters=",;\t|").delimiter
     except csv.Error:
         delim = ";" if sample.count(";") > sample.count(",") else ","
     rows = [r for r in csv.reader(io.StringIO(text), delimiter=delim) if any(c.strip() for c in r)]
     if len(rows) < 2:
         raise ParseError("empty_csv", "a header and at least one row are needed")
-    header, values = rows[0], rows[1]
-    if len(rows) > 2:
-        raise ParseError("several_statements", f"{len(rows) - 1} rows: one statement per file is expected")
-    out: list[str] = []
-    for h, v in zip(header, values, strict=False):
-        out.extend([h.strip(), v.strip()])
-    return out
+    header = rows[0]
+    known = sum(1 for h in header if classify(h) is not None)
+    if known >= 3:  # a wide export: one column per field, one row per statement
+        if len(rows) > 2:
+            raise ParseError("several_statements", f"{len(rows) - 1} statements in one file: one per file is expected")
+        out: list[str] = []
+        for h, v in zip(header, rows[1], strict=False):
+            out.extend([h.strip(), v.strip()])
+        return out
+    # a long export: one row per field (label, value, maybe a unit)
+    return [c.strip() for r in rows for c in r if c.strip()]
 
 
 # --------------------------------------------------------------------------- reading values
@@ -176,25 +195,72 @@ def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip(" :.\t")
 
 
-def _labels() -> list[tuple[str, str]]:
-    pairs = [(field_name, _norm(syn)) for field_name, syns in vocabulary()["fields"].items() for syn in syns]
-    return sorted(pairs, key=lambda p: -len(p[1]))
+def _norm_label(s: str) -> str:
+    s = s.lower().replace("_", " ").replace("’", " ").replace("'", " ").replace("-", " ").replace("/", " ")
+    s = re.sub(r"[^\wäöüß ]+", " ", s)
+    return " " + re.sub(r"\s+", " ", s).strip() + " "
 
 
-def match_label(cell: str) -> tuple[str, str] | None:
-    """(field, rest of the cell) when the cell starts with a known label."""
-    n = _norm(cell)
-    for field_name, syn in _labels():
-        if n == syn or n.startswith(syn + " ") or n.startswith(syn + ":"):
-            rest = cell.strip()[len(syn) :] if cell.strip().lower().startswith(syn) else _after_label(cell, syn)
-            return field_name, rest.strip(" :\t")
+def _has(text: str, words: list[str]) -> str | None:
+    """The longest of `words` found in `text` as whole words."""
+    best = None
+    for w in words:
+        n = _norm_label(w)
+        if n in text and (best is None or len(n) > len(best)):
+            best = n
+    return best
+
+
+@dataclass
+class Label:
+    field: str
+    strength: int  # length of the matched word: "capital account balance" beats "capital account"
+    marker: str  # cumulative | period | closing | opening | plain
+
+
+AMOUNT_ORDER = ("unfunded", "commitment", "paid_in", "distributed", "nav")
+
+
+def classify(cell: str) -> Label | None:
+    """The field a label names, if any, and whether it is the cumulative, period, closing or opening figure."""
+    if not re.search(r"[A-Za-zÄÖÜäöü]{2}", cell) or len(cell) > 70 or re.search(r"[a-z]\. [A-Z]", cell):
+        return None  # prose, not a label
+    text = _norm_label(re.sub(r"\d{1,4}[./-]\d{1,2}[./-]\d{2,4}", " ", cell))
+    voc = vocabulary()
+    marks = voc["markers"]
+
+    def marker() -> str:
+        for m in ("opening", "closing", "period", "cumulative"):
+            if _has(text, marks[m]):
+                return m
+        return "plain"
+
+    for name in AMOUNT_ORDER:
+        f = voc["fields"][name]
+        hit = _has(text, f["words"])
+        if hit and not _has(text, f.get("not", [])):
+            return Label(name, len(hit), marker())
+    for name in ("statement_date", "period_end", "currency", "fund"):
+        hit = _has(text, voc["fields"][name]["words"])
+        if hit:
+            return Label(name, len(hit), "plain")
     return None
 
 
-def _after_label(cell: str, syn: str) -> str:
-    # the label may differ in case, underscores or spacing: cut by the number of words
-    words = cell.replace("_", " ").split()
-    return " ".join(words[len(syn.split()) :])
+def _looks_like_date(raw: str) -> bool:
+    return parse_date(raw) is not None and not re.fullmatch(r"[-(]?[\d.,' ]+\)?", raw.strip()) or bool(
+        re.fullmatch(r"\d{1,2}[./]\d{1,2}[./]\d{2,4}|\d{4}-\d{2}-\d{2}", raw.strip())
+    )
+
+
+def _is_number_cell(raw: str) -> bool:
+    s = re.sub(r"(?i)\b(eur|usd|gbp|chf|teur|tusd|mio|m|k)\b|[€$£\s]", "", raw.strip())
+    return (
+        bool(re.fullmatch(r"[-(]?\d[\d.,']*\)?-?", s))
+        and not _looks_like_date(raw)
+        and "%" not in raw
+        and not YEAR.fullmatch(raw.strip())  # a year on its own is not an amount
+    )
 
 
 def parse_number(raw: str, german: bool) -> Decimal | None:
@@ -298,54 +364,144 @@ def identify_fund(cells: list[str], stated: str | None) -> str | None:
     return best
 
 
+@dataclass
+class Candidate:
+    field: str
+    marker: str
+    strength: int
+    raw: str
+    position: int
+    label_date: dt.date | None = None
+
+
+RANK = {"cumulative": 0, "closing": 0, "plain": 1, "period": 9, "opening": 9}
+PERIOD_PHRASES = re.compile(
+    r"(?i)(?:quarter|period|year|halbjahr|quartal)\s+(?:ended|ending|end|endend)\s+(?:on\s+)?(.{6,24}?\d{4})"
+    r"|\bas\s+(?:of|at)\s+(.{6,24}?\d{4})|\bzum\s+(\d{1,2}\.\s?\d{1,2}\.\s?\d{4}|\d{1,2}\.?\s+\w+\s+\d{4})"
+    r"|\bper\s+(\d{1,2}\.\d{1,2}\.\d{4})|\bto\s+(\d{1,2}\s+\w+\s+\d{4}|\w+\s+\d{1,2},\s+\d{4})"
+    r"|(?:statement|report|auszug|bericht)\s*[-–:]\s*(\d{1,2}\.?\s?\w+\.?\s?\d{4}|\w+\s+\d{1,2},\s+\d{4})"
+)
+
+
 def parse_cells(cells: list[str], parser: str) -> Statement:
     st = Statement(parser=parser)
     doc = " ".join(cells)
-    german = sum(h in doc.lower() for h in GERMAN_HINTS) >= 2
+    german = sum(h in doc.lower() for h in GERMAN_HINTS) >= 2 or bool(re.search(r"\d\.\d{3},\d{2}", doc))
     us_dates = bool(re.search(r"\b(0?[1-9]|1[0-2])/(29|30|31)/\d{4}\b", doc))
-    found: dict[str, str] = {}
-    for i, cell in enumerate(cells):
-        m = match_label(cell)
-        if not m:
+    found: list[Candidate] = []
+    labels = [classify(c) for c in cells]
+    period_words = vocabulary()["fields"]["period_end"]["words"]
+    for i, (cell, lab) in enumerate(zip(cells, labels, strict=True)):
+        label_date = parse_date(cell, us_dates)
+        # "Net asset value as at 30 September 2026", "Zwischenmitteilung - Stichtag 15.05.2026": a period end,
+        # whatever else the cell names
+        if label_date and len(cell) <= 90:
+            hit = _has(_norm_label(cell), period_words)
+            if hit and (lab is None or lab.field != "period_end"):
+                found.append(Candidate("period_end", "plain", len(hit), cell, i))
+        if lab is None:
             continue
-        name, rest = m
-        if name in found:
+        if lab.field in DATE_FIELDS and label_date:  # "Kapitalkontoauszug zum 30.06.2026": the date is in the label
+            found.append(Candidate(lab.field, lab.marker, lab.strength, cell, i))
             continue
-        candidates = [rest] if rest else []
-        candidates += cells[i + 1 : i + 3]
-        for cand in candidates:
-            if name in AMOUNT_FIELDS:
-                if parse_number(cand, german) is not None and not match_label(cand):
-                    found[name] = cand
-                    break
-            elif name in DATE_FIELDS:
-                if parse_date(cand, us_dates) is not None:
-                    found[name] = cand
-                    break
-            elif name == "currency":
-                if _currency(cand):
-                    found[name] = cand
-                    break
-            elif name == "fund" and cand and not match_label(cand):
-                found[name] = cand
+        # the value: in the following cells, before the next label
+        for k in range(i + 1, min(i + 4, len(cells))):
+            nxt = cells[k]
+            if labels[k] is not None and not _is_number_cell(nxt):
                 break
+            if lab.field in AMOUNT_FIELDS and not _is_number_cell(nxt) and not UNIT_TOKEN.match(nxt.strip()) and nxt.strip() not in ("-", "–"):
+                break  # another row's text: this label has no value of its own (a heading)
+            if lab.field in AMOUNT_FIELDS and _is_number_cell(nxt):
+                # a period column and a cumulative column: the cumulative one is on the right
+                run = [nxt]
+                while k + len(run) < len(cells) and len(run) < 3 and _is_number_cell(cells[k + len(run)]):
+                    run.append(cells[k + len(run)])
+                found.append(Candidate(lab.field, lab.marker, lab.strength, run[-1], i, label_date))
+                break
+            if lab.field in DATE_FIELDS and parse_date(nxt, us_dates):
+                found.append(Candidate(lab.field, lab.marker, lab.strength, nxt, i))
+                break
+            if lab.field == "currency" and _currency(nxt):
+                found.append(Candidate("currency", "plain", lab.strength, nxt, i))
+                break
+            if lab.field == "fund" and nxt and not _is_number_cell(nxt):
+                found.append(Candidate("fund", "plain", lab.strength, nxt, i))
+                break
+        else:
+            if lab.field in DATE_FIELDS and label_date:  # "Kapitalkontoauszug zum 30.06.2026"
+                found.append(Candidate(lab.field, lab.marker, lab.strength, cell, i))
+            if lab.field == "currency" and _currency(cell):  # "All amounts in USD"
+                found.append(Candidate("currency", "plain", lab.strength, cell, i))
+
     st.unit_scale = _unit_scale(doc)
-    for name in AMOUNT_FIELDS:
-        if name in found:
-            v = parse_number(found[name], german)
-            if v is not None:
-                setattr(st, name, (v * st.unit_scale).quantize(Decimal("0.01")))
+    # dates first: the closing NAV is the one at the period end
+    dates = {}
     for name in DATE_FIELDS:
-        if name in found:
-            setattr(st, name, parse_date(found[name], us_dates))
-    st.currency = _currency(found.get("currency", "")) or _currency(" ".join(found.get(f, "") for f in AMOUNT_FIELDS))
-    st.fund = identify_fund(cells, found.get("fund"))
+        cands = [c for c in found if c.field == name]
+        if cands:
+            best = max(cands, key=lambda c: (c.strength, -c.position))
+            all_dates = [d for d in (_all_dates(best.raw, us_dates)) if d]
+            if all_dates:
+                dates[name] = max(all_dates) if name == "period_end" else all_dates[0]
+    if "period_end" not in dates:
+        for m in PERIOD_PHRASES.finditer(doc):
+            d = parse_date(next(g for g in m.groups() if g), us_dates)
+            if d and _is_quarter_end(d):
+                dates["period_end"] = d
+                break
+    st.period_end = dates.get("period_end")
+    st.statement_date = dates.get("statement_date")
+
+    for name in AMOUNT_FIELDS:
+        cands = [c for c in found if c.field == name and RANK[c.marker] < 9]
+        if name == "nav" and st.period_end:
+            # a roll-forward: "capital at 31 March 2026" is the closing NAV, "at 31 December 2025" the opening
+            dated = [c for c in cands if c.label_date is not None]
+            if dated:
+                cands = [c for c in dated if c.label_date == st.period_end] or [c for c in cands if c.label_date is None]
+        if not cands:
+            continue
+        best = min(cands, key=lambda c: (RANK[c.marker], -c.strength, c.position))
+        v = parse_number(best.raw, german)
+        if v is None:
+            continue
+        v = abs(v) if name == "distributed" else v  # some managers show money out as negative
+        setattr(st, name, (v * st.unit_scale).quantize(Decimal("0.01")))
+
+    cur = next((c for c in found if c.field == "currency"), None)
+    st.currency = _currency(cur.raw) if cur else None
+    st.currency = st.currency or _currency(" ".join(c.raw for c in found if c.field in AMOUNT_FIELDS)) or _currency_words(doc)
+    stated_fund = next((c.raw for c in found if c.field == "fund"), None)
+    st.fund = identify_fund(cells, stated_fund)
     if st.currency is None and st.fund:
         st.currency = target_funds()[st.fund]["currency"]
         st.notes.append("currency taken from the fund's master data: the statement does not state it")
     if st.unit_scale != 1:
         st.notes.append(f"amounts scaled by {st.unit_scale}: the statement says so")
+    if (
+        None not in (st.commitment, st.paid_in, st.unfunded)
+        and abs(st.commitment - st.paid_in - st.unfunded) > st.commitment * Decimal("0.005")  # type: ignore[operator]
+    ):
+        # recallable distributions and fees outside the commitment make this legitimate: noted, not rejected
+        st.notes.append(f"unfunded {st.unfunded} is not commitment minus paid-in")
     return st
+
+
+def _all_dates(raw: str, us: bool) -> list[dt.date]:
+    out = []
+    for part in re.split(r"\s+(?:to|bis|until|-|–)\s+", raw):
+        d = parse_date(part, us)
+        if d:
+            out.append(d)
+    return out
+
+
+def _currency_words(doc: str) -> str | None:
+    text = _norm_label(doc)
+    for cur, words in vocabulary()["currency_words"].items():
+        if cur != "EUR" and _has(text, words):
+            return cur
+    return "EUR" if _has(text, vocabulary()["currency_words"]["EUR"]) else None
 
 
 def parse_statement(path: Path) -> Statement:
@@ -381,8 +537,6 @@ def violations(st: Statement) -> list[tuple[str, str]]:
         out.append(("amounts_not_negative", "an amount is negative"))
     if st.paid_in > st.commitment * Decimal("1.02"):
         out.append(("paid_in_within_commitment", f"paid in {st.paid_in} against a commitment of {st.commitment}"))
-    if st.unfunded is not None and abs(st.commitment - st.paid_in - st.unfunded) > st.commitment * Decimal("0.005"):
-        out.append(("unfunded_adds_up", f"{st.commitment} - {st.paid_in} != {st.unfunded}"))
     if st.statement_date is not None and st.statement_date < st.period_end:
         out.append(("statement_after_period", f"issued {st.statement_date} before the period end {st.period_end}"))
     return out

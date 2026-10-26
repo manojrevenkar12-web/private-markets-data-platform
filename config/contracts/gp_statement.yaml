@@ -7,6 +7,7 @@ rules:
   - {name: quarter_end, check: "period_end is the last day of a quarter"}
   - {name: amounts_not_negative, check: "commitment, paid_in, distributed, nav >= 0"}
   - {name: paid_in_within_commitment, check: "paid_in <= commitment * 1.02", note: "2 % for fees called outside the commitment"}
-  - {name: unfunded_adds_up, check: "abs(commitment - paid_in - unfunded) <= 0.005 * commitment when unfunded is stated"}
+  # not a rule: recallable distributions and fees outside the commitment make unfunded differ from
+  # commitment minus paid-in. The parser notes the difference instead.
   - {name: statement_after_period, check: "statement_date >= period_end when stated"}
   - {name: fund_known, check: "fund matches a target fund in config/funds.yaml"}

@@ -152,7 +152,7 @@ def test_contract_rules() -> None:
         "100,00",
     ]
     rules = {r for r, _ in violations(parse_cells(cells, "test"))}
-    assert {"quarter_end", "paid_in_within_commitment", "unfunded_adds_up"} <= rules
+    assert {"quarter_end", "paid_in_within_commitment"} <= rules
 
 
 def test_unknown_fund_and_missing_nav_are_rejected() -> None:
@@ -162,7 +162,7 @@ def test_unknown_fund_and_missing_nav_are_rejected() -> None:
 
 def test_one_statement_per_csv(tmp_path: Path) -> None:
     p = tmp_path / "two.csv"
-    p.write_text("fund,nav\nA,1\nB,2\n", encoding="utf-8")
+    p.write_text("fund,period_end,commitment,nav\nA,2026-06-30,1,1\nB,2026-06-30,2,2\n", encoding="utf-8")
     with pytest.raises(ParseError) as e:
         parse_statement(p)
     assert e.value.rule == "several_statements"

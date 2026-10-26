@@ -1,16 +1,49 @@
-# How fund managers label the fields of a capital account statement, in English and German. The statement
-# parser reads labels, not layouts: a new manager's format usually needs a synonym here, not new code.
+# How fund managers label the fields of a capital account statement, in English and German.
+#
+# The parser reads labels, not layouts. A label belongs to a field when it contains one of the field's words
+# (and none of its `not` words). Markers then say which of several figures for the same field is the one we
+# want: the cumulative paid-in rather than this quarter's, the closing NAV rather than the opening one.
+# A new manager's wording usually needs a word here, not new code. All matching is on lower-cased text with
+# punctuation and underscores turned into spaces.
+
 fields:
-  commitment: [total commitment, commitment, capital commitment, committed capital, zeichnungsbetrag, kapitalzusage, zusage, gesamtzusage, total_commitment, commitment amount]
-  paid_in: [contributions to date, paid-in capital, paid in capital, paid_in, called capital, called_capital, contributed, cumulative contributions, capital called, drawn capital, eingezahltes kapital, abgerufenes kapital, einzahlungen kumuliert, einzahlungen]
-  distributed: [distributions to date, distributions, distributed, cumulative distributions, total distributions, ausschüttungen kumuliert, ausschüttungen, ausschuettungen, rückflüsse]
-  nav: [capital account balance (nav), capital account balance, net asset value, nav, capital_account, ending capital account, closing capital account, nettoinventarwert (nav), nettoinventarwert, kapitalkonto, inventarwert, wert der beteiligung]
-  unfunded: [unfunded commitment, remaining commitment, unfunded, offene einzahlungsverpflichtung, nicht abgerufene zusage, offene zusage]
-  period_end: [for the period ended, period ended, period end, as of, as at, reference date, reference_date, as_of, period_end, quarter ended, stichtag, kapitalkontoauszug zum, zum, berichtsstichtag]
-  statement_date: [statement date, report date, issued, statement_date, date of issue, erstellt am, ausstellungsdatum, datum]
-  currency: [all amounts in, currency, ccy, währung, waehrung, beträge in, amounts in]
-  fund: [fund, fund_name, fund name, fonds, fondsname]
+  statement_date:
+    words: [statement date, date of issue, issue date, issued, report date, reporting date of issue, erstellt am, erstellt, ausgestellt am, ausstellungsdatum, datum des auszugs, versanddatum]
+  period_end:
+    words: [as of, as at, period end, period ended, quarter ended, quarter end, reference date, reporting date, valuation date, reporting period, period, stichtag, berichtsstichtag, bewertungsstichtag, berichtszeitraum, zeitraum, kapitalkontoauszug zum, as of date]
+  unfunded:
+    words: [unfunded, remaining commitment, remaining unfunded, undrawn, outstanding commitment, uncalled, offene kapitalzusage, offene einzahlungsverpflichtung, offene zusage, nicht abgerufen, noch nicht abgerufen, restzusage, ausstehende einzahlung]
+  commitment:
+    words: [commitment, committed capital, capital committed, zeichnungsbetrag, kapitalzusage, zusage, gezeichnetes kapital, zeichnungssumme, pflichteinlage]
+    not: [unfunded, remaining, undrawn, outstanding, uncalled, offene, nicht abgerufen, restzusage, fee]
+  paid_in:
+    words: [contribution, contributions, contributed, paid in, paid in capital, called capital, capital called, drawn, drawn capital, drawdowns, capital calls, einzahlung, einzahlungen, eingezahlt, eingezahltes, abgerufen, abgerufenes kapital, kapitalabruf, kapitalabrufe, abrufe]
+    not: [unfunded, remaining, uncalled, offene, nicht abgerufen, fee, gebühr, vergütung, return of]
+  distributed:
+    words: [distribution, distributions, distributed, ausschüttung, ausschüttungen, ausschuettung, ausschuettungen, rückfluss, rückflüsse, auszahlungen]
+    not: [recallable portion, rückrufbar]
+  nav:
+    words: [net asset value, nav, capital account balance, capital account, partner s capital, partners capital, ending capital, closing capital, ending balance, closing balance, nettoinventarwert, inventarwert, kapitalkontostand, kapitalkonto, wert der beteiligung, anteilswert, net asset value of the investor]
+    not: [opening, beginning, anfangsbestand, start of period, change in, movement]
+  currency:
+    words: [currency, ccy, währung, waehrung, all amounts in, amounts in, beträge in, betraege in, reporting currency, berichtswährung]
+  fund:
+    words: [fund, fund name, fonds, fondsname, partnership, gesellschaft, fund legal name]
+
+markers:
+  # this quarter's (or year's) figure next to the cumulative one: not the figure we want
+  period: [this quarter, the quarter, in the quarter, quarter to date, qtd, ytd, year to date, this period, in the period, during the period, im quartal, für das quartal, im berichtszeitraum, im zeitraum, im halbjahr, h1, h2, q1, q2, q3, q4, monthly, for the period, in period, thereof, davon]
+  cumulative: [cumulative, to date, since inception, inception to date, itd, kumuliert, kumulativ, seit auflage, seit auflegung, seit beginn, bis dato, total, gesamt, aggregate, summe]
+  closing: [ending, closing, end of period, at period end, schlussbestand, endbestand, zum stichtag]
+  opening: [opening, beginning, start of period, anfangsbestand, eröffnungsbestand, vortrag]
+
 units:
-  thousands: ["in thousands", "'000", "000s", "teur", "tsd", "in tsd", "tusd", "k eur"]
-  millions: ["in millions", "mio", "meur", "musd", "mn"]
+  thousands: ["in thousands", "thousands", "'000", "000s", "000 s", "teur", "tsd", "in tsd", "tusd", "k eur", "eur k", "usd k", "in tausend"]
+  millions: ["in millions", "millions", "mio", "meur", "musd", "eur m", "usd m", "eur mn", "usd mn", "in mio"]
+
 currencies: [EUR, USD, GBP, CHF]
+currency_words:
+  USD: [u s dollars, us dollars, u s dollar, us dollar, united states dollars, usd]
+  EUR: [euro, euros, eur]
+  GBP: [pounds sterling, british pounds, gbp]
+  CHF: [swiss francs, chf]
