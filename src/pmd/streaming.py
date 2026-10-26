@@ -100,7 +100,8 @@ class KafkaSource:  # pragma: no cover - exercised by tests marked kafka
             msgs = [m for m in msgs if m.error() is None]
             if not msgs:
                 return
-            yield [Message(m.partition(), m.offset(), m.value()) for m in msgs]
+            # an empty value (a tombstone) cannot be parsed and goes to the dead letters like any bad event
+            yield [Message(m.partition() or 0, m.offset() or 0, m.value() or b"") for m in msgs]
 
     def committed(self, c: Connection, batch: list[Message]) -> None:
         pass  # Kafka offsets are committed after the database commit, in consume()
