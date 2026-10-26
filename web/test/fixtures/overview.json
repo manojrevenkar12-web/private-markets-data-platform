@@ -1,0 +1,260 @@
+{
+  "as_of": "2026-10-26",
+  "published_run": {
+    "run_id": "20261026_185114960322",
+    "status": "published",
+    "as_of": "2026-10-26",
+    "finished_at": "2026-10-26T18:51:49.548199+01:00",
+    "gates": [
+      {
+        "name": "dbt_tests",
+        "count": 0,
+        "detail": "every model built and every test passed",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "marts_not_empty",
+        "count": 0,
+        "detail": "every client-facing mart has rows",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "nav_drift",
+        "count": 0,
+        "detail": "no fund NAV moved more than 25% without a new statement",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "unmatched_receipts",
+        "count": 3,
+        "detail": "3 receipts nobody has placed for more than 10 days",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "overdue_calls",
+        "count": 33,
+        "detail": "33 capital call payments overdue",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "late_statements",
+        "count": 1,
+        "detail": "1 statements past due; their NAV is estimated",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "statement_holds",
+        "count": 1,
+        "detail": "1 statements held back by their checks; their quarter is estimated",
+        "passed": false,
+        "severity": "warn"
+      }
+    ]
+  },
+  "latest_run": {
+    "run_id": "20261026_185114960322",
+    "status": "published",
+    "started_at": "2026-10-26T18:51:40.082214+01:00",
+    "finished_at": "2026-10-26T18:51:49.548199+01:00",
+    "gates": [
+      {
+        "name": "dbt_tests",
+        "count": 0,
+        "detail": "every model built and every test passed",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "marts_not_empty",
+        "count": 0,
+        "detail": "every client-facing mart has rows",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "nav_drift",
+        "count": 0,
+        "detail": "no fund NAV moved more than 25% without a new statement",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "unmatched_receipts",
+        "count": 3,
+        "detail": "3 receipts nobody has placed for more than 10 days",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "overdue_calls",
+        "count": 33,
+        "detail": "33 capital call payments overdue",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "late_statements",
+        "count": 1,
+        "detail": "1 statements past due; their NAV is estimated",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "statement_holds",
+        "count": 1,
+        "detail": "1 statements held back by their checks; their quarter is estimated",
+        "passed": false,
+        "severity": "warn"
+      }
+    ]
+  },
+  "feeders": [
+    {
+      "feeder": "PD1",
+      "feeder_name": "Northlake Private Debt I",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "18995379.52",
+      "cash_eur": "1199793.70",
+      "total_commitment": "24900000.00",
+      "has_estimates": true
+    },
+    {
+      "feeder": "PE5",
+      "feeder_name": "Northlake Private Equity V",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "64528885.11",
+      "cash_eur": "5180740.04",
+      "total_commitment": "80650000.00",
+      "has_estimates": true
+    },
+    {
+      "feeder": "VC3",
+      "feeder_name": "Northlake Venture III",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "60997981.07",
+      "cash_eur": "2777803.45",
+      "total_commitment": "65350000.00",
+      "has_estimates": true
+    }
+  ],
+  "clients": {
+    "clients": 420,
+    "commitments": "170900000.00"
+  },
+  "breaks": [
+    {
+      "kind": "payment_short",
+      "owner": "operations",
+      "open": 62,
+      "amount_eur": "149167.50"
+    },
+    {
+      "kind": "payment_over",
+      "owner": "operations",
+      "open": 44,
+      "amount_eur": "119707.50"
+    },
+    {
+      "kind": "payment_overdue",
+      "owner": "operations",
+      "open": 33,
+      "amount_eur": "790475.00"
+    },
+    {
+      "kind": "payment_duplicate",
+      "owner": "operations",
+      "open": 30,
+      "amount_eur": "809675.00"
+    },
+    {
+      "kind": "unmatched_receipt",
+      "owner": "operations",
+      "open": 3,
+      "amount_eur": "50000.00"
+    },
+    {
+      "kind": "statement_held",
+      "owner": "fund_accounting",
+      "open": 1,
+      "amount_eur": "0"
+    },
+    {
+      "kind": "statement_late",
+      "owner": "fund_accounting",
+      "open": 1,
+      "amount_eur": "0"
+    }
+  ],
+  "freshness": [
+    {
+      "source": "bank_statement",
+      "status": "fresh",
+      "feeds": 3
+    },
+    {
+      "source": "gp_statement",
+      "status": "fresh",
+      "feeds": 11
+    },
+    {
+      "source": "gp_statement",
+      "status": "late",
+      "feeds": 1
+    },
+    {
+      "source": "payment_events",
+      "status": "fresh",
+      "feeds": 3
+    }
+  ],
+  "cash_now": [
+    {
+      "call_id": "PD1-2026Q4",
+      "feeder": "PD1",
+      "notice_date": "2026-10-12",
+      "due_date": "2026-10-26",
+      "clients": 196,
+      "expected_eur": "747000.00",
+      "booked_eur": "529620.00",
+      "arrived_since_statement_eur": "158040.00",
+      "outstanding_eur": "59340.00",
+      "clients_not_paid": 16,
+      "last_event_at": "2026-10-26T19:50:06+01:00",
+      "last_statement_on": "2026-10-23"
+    },
+    {
+      "call_id": "PE5-2026Q4",
+      "feeder": "PE5",
+      "notice_date": "2026-10-12",
+      "due_date": "2026-10-26",
+      "clients": 272,
+      "expected_eur": "1411375.00",
+      "booked_eur": "1066800.00",
+      "arrived_since_statement_eur": "244125.00",
+      "outstanding_eur": "100450.00",
+      "clients_not_paid": 24,
+      "last_event_at": "2026-10-26T19:29:07+01:00",
+      "last_statement_on": "2026-10-23"
+    },
+    {
+      "call_id": "VC3-2026Q4",
+      "feeder": "VC3",
+      "notice_date": "2026-10-12",
+      "due_date": "2026-10-26",
+      "clients": 213,
+      "expected_eur": "1143625.00",
+      "booked_eur": "810075.00",
+      "arrived_since_statement_eur": "260575.00",
+      "outstanding_eur": "72975.00",
+      "clients_not_paid": 18,
+      "last_event_at": "2026-10-26T19:18:24+01:00",
+      "last_statement_on": "2026-10-23"
+    }
+  ]
+}

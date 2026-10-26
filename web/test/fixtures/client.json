@@ -1,0 +1,784 @@
+{
+  "client": {
+    "client_key": "ck_bd6109e2ef2b6c4b",
+    "segment": "Entrepreneur",
+    "risk_profile": "growth",
+    "country": "DE",
+    "age_band": "60-69",
+    "onboarded_on": "2022-06-12",
+    "advisor": "Team Ost",
+    "status": "client",
+    "total_commitment": "2000000.00",
+    "feeders": 3
+  },
+  "performance": [
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PD1",
+      "as_of_quarter": "2026-09-30",
+      "commitment": "500000.00",
+      "paid_in_eur": "405000.00",
+      "distributed_eur": "36250.00",
+      "nav_eur": "381433.32",
+      "unfunded_eur": "95000.00",
+      "dpi": "0.0895",
+      "tvpi": "1.0313",
+      "irr": "0.035702",
+      "nav_has_estimates": true
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "as_of_quarter": "2026-09-30",
+      "commitment": "500000.00",
+      "paid_in_eur": "408750.00",
+      "distributed_eur": "63750.00",
+      "nav_eur": "400055.08",
+      "unfunded_eur": "91250.00",
+      "dpi": "0.1560",
+      "tvpi": "1.1347",
+      "irr": "0.077932",
+      "nav_has_estimates": true
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "as_of_quarter": "2026-09-30",
+      "commitment": "1000000.00",
+      "paid_in_eur": "980000.00",
+      "distributed_eur": "45000.00",
+      "nav_eur": "933404.45",
+      "unfunded_eur": "20000.00",
+      "dpi": "0.0459",
+      "tvpi": "0.9984",
+      "irr": "-0.000714",
+      "nav_has_estimates": true
+    }
+  ],
+  "lookthrough": [
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PD1",
+      "quarter_end": "2026-09-30",
+      "fund": "CRE4",
+      "fund_name": "Crestline Direct Lending IV",
+      "strategy": "Direct lending",
+      "region": "Europe",
+      "currency": "EUR",
+      "nav_eur": "134076.47",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PD1",
+      "quarter_end": "2026-09-30",
+      "fund": "BAS2",
+      "fund_name": "Bastion Senior Debt II",
+      "strategy": "Senior debt",
+      "region": "DACH",
+      "currency": "EUR",
+      "nav_eur": "133802.50",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PD1",
+      "quarter_end": "2026-09-30",
+      "fund": "MER3",
+      "fund_name": "Meridian Infrastructure Debt III",
+      "strategy": "Infrastructure debt",
+      "region": "Europe",
+      "currency": "EUR",
+      "nav_eur": "89462.12",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PD1",
+      "quarter_end": "2026-09-30",
+      "fund": null,
+      "fund_name": "Cash at the feeder",
+      "strategy": "Cash",
+      "region": null,
+      "currency": "EUR",
+      "nav_eur": "24092.24",
+      "nav_source": "bank",
+      "estimate_reason": null
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": "AUR7",
+      "fund_name": "Aurora Buyout Fund VII",
+      "strategy": "Buyout",
+      "region": "North America",
+      "currency": "USD",
+      "nav_eur": "102949.41",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": "KES4",
+      "fund_name": "Kestrel European Buyout IV",
+      "strategy": "Buyout",
+      "region": "Europe",
+      "currency": "EUR",
+      "nav_eur": "87400.14",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": "ORI9",
+      "fund_name": "Orion Global Partners IX",
+      "strategy": "Buyout",
+      "region": "Global",
+      "currency": "USD",
+      "nav_eur": "61336.08",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": "FJD3",
+      "fund_name": "Fjord Secondaries III",
+      "strategy": "Secondaries",
+      "region": "Global",
+      "currency": "EUR",
+      "nav_eur": "59965.26",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": "HAL2",
+      "fund_name": "Halvard Mid-Market II",
+      "strategy": "Buyout",
+      "region": "DACH",
+      "currency": "EUR",
+      "nav_eur": "56285.54",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "fund": null,
+      "fund_name": "Cash at the feeder",
+      "strategy": "Cash",
+      "region": null,
+      "currency": "EUR",
+      "nav_eur": "32118.66",
+      "nav_source": "bank",
+      "estimate_reason": null
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "fund": "NOV3",
+      "fund_name": "Novara Growth III",
+      "strategy": "Growth",
+      "region": "Europe",
+      "currency": "EUR",
+      "nav_eur": "268993.10",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "fund": "SPR2",
+      "fund_name": "Spree Seed II",
+      "strategy": "Seed",
+      "region": "DACH",
+      "currency": "EUR",
+      "nav_eur": "233682.72",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "fund": "LUM5",
+      "fund_name": "Lumen Ventures V",
+      "strategy": "Venture",
+      "region": "North America",
+      "currency": "USD",
+      "nav_eur": "201919.45",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "fund": "TID1",
+      "fund_name": "Tidewater Climate Tech I",
+      "strategy": "Venture",
+      "region": "Europe",
+      "currency": "EUR",
+      "nav_eur": "186302.62",
+      "nav_source": "estimated",
+      "estimate_reason": "statement not yet due"
+    },
+    {
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "fund": null,
+      "fund_name": "Cash at the feeder",
+      "strategy": "Cash",
+      "region": null,
+      "currency": "EUR",
+      "nav_eur": "42506.56",
+      "nav_source": "bank",
+      "estimate_reason": null
+    }
+  ],
+  "positions": [
+    {
+      "feeder": "PD1",
+      "quarter_end": "2025-09-30",
+      "nav_eur": "157673.90",
+      "paid_in_eur": "160000.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PD1",
+      "quarter_end": "2025-12-31",
+      "nav_eur": "273983.81",
+      "paid_in_eur": "271250.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PD1",
+      "quarter_end": "2026-03-31",
+      "nav_eur": "335158.29",
+      "paid_in_eur": "335000.00",
+      "distributed_eur": "7500.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PD1",
+      "quarter_end": "2026-06-30",
+      "nav_eur": "372390.15",
+      "paid_in_eur": "378750.00",
+      "distributed_eur": "18750.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PD1",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "381433.32",
+      "paid_in_eur": "405000.00",
+      "distributed_eur": "36250.00",
+      "nav_has_estimates": true
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2024-06-30",
+      "nav_eur": "96087.11",
+      "paid_in_eur": "96250.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2024-09-30",
+      "nav_eur": "173757.92",
+      "paid_in_eur": "167500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2024-12-31",
+      "nav_eur": "231001.40",
+      "paid_in_eur": "226250.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2025-03-31",
+      "nav_eur": "271823.39",
+      "paid_in_eur": "270000.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2025-06-30",
+      "nav_eur": "312065.16",
+      "paid_in_eur": "307500.00",
+      "distributed_eur": "3750.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2025-09-30",
+      "nav_eur": "337721.09",
+      "paid_in_eur": "337500.00",
+      "distributed_eur": "11250.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2025-12-31",
+      "nav_eur": "366203.00",
+      "paid_in_eur": "360000.00",
+      "distributed_eur": "17500.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2026-03-31",
+      "nav_eur": "398978.51",
+      "paid_in_eur": "380000.00",
+      "distributed_eur": "21250.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2026-06-30",
+      "nav_eur": "399264.86",
+      "paid_in_eur": "396250.00",
+      "distributed_eur": "42500.00",
+      "nav_has_estimates": true
+    },
+    {
+      "feeder": "PE5",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "400055.08",
+      "paid_in_eur": "408750.00",
+      "distributed_eur": "63750.00",
+      "nav_has_estimates": true
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2023-09-30",
+      "nav_eur": "157083.29",
+      "paid_in_eur": "157500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2023-12-31",
+      "nav_eur": "286433.55",
+      "paid_in_eur": "407500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2024-03-31",
+      "nav_eur": "404311.13",
+      "paid_in_eur": "507500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2024-06-30",
+      "nav_eur": "493184.32",
+      "paid_in_eur": "592500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2024-09-30",
+      "nav_eur": "547265.93",
+      "paid_in_eur": "657500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2024-12-31",
+      "nav_eur": "613083.67",
+      "paid_in_eur": "715000.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2025-03-31",
+      "nav_eur": "706740.69",
+      "paid_in_eur": "772500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2025-06-30",
+      "nav_eur": "709830.90",
+      "paid_in_eur": "817500.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2025-09-30",
+      "nav_eur": "756224.35",
+      "paid_in_eur": "860000.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2025-12-31",
+      "nav_eur": "822169.91",
+      "paid_in_eur": "900000.00",
+      "distributed_eur": "0",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2026-03-31",
+      "nav_eur": "861847.14",
+      "paid_in_eur": "930000.00",
+      "distributed_eur": "15000.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2026-06-30",
+      "nav_eur": "923879.24",
+      "paid_in_eur": "957500.00",
+      "distributed_eur": "20000.00",
+      "nav_has_estimates": false
+    },
+    {
+      "feeder": "VC3",
+      "quarter_end": "2026-09-30",
+      "nav_eur": "933404.45",
+      "paid_in_eur": "980000.00",
+      "distributed_eur": "45000.00",
+      "nav_has_estimates": true
+    }
+  ],
+  "payments": [
+    {
+      "call_id": "VC3-2026Q4",
+      "feeder": "VC3",
+      "due_date": "2026-10-26",
+      "expected_eur": "17500.00",
+      "received_eur": "17500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2026Q4",
+      "feeder": "PD1",
+      "due_date": "2026-10-26",
+      "expected_eur": "15000.00",
+      "received_eur": "15000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2026Q4",
+      "feeder": "PE5",
+      "due_date": "2026-10-26",
+      "expected_eur": "8750.00",
+      "received_eur": "8750.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2026Q3",
+      "feeder": "PD1",
+      "due_date": "2026-07-27",
+      "expected_eur": "26250.00",
+      "received_eur": "26250.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2026Q3",
+      "feeder": "PE5",
+      "due_date": "2026-07-27",
+      "expected_eur": "12500.00",
+      "received_eur": "12500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2026Q3",
+      "feeder": "VC3",
+      "due_date": "2026-07-27",
+      "expected_eur": "22500.00",
+      "received_eur": "22500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2026Q2",
+      "feeder": "VC3",
+      "due_date": "2026-04-27",
+      "expected_eur": "27500.00",
+      "received_eur": "27500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2026Q2",
+      "feeder": "PD1",
+      "due_date": "2026-04-27",
+      "expected_eur": "43750.00",
+      "received_eur": "43750.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2026Q2",
+      "feeder": "PE5",
+      "due_date": "2026-04-27",
+      "expected_eur": "16250.00",
+      "received_eur": "16250.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2026Q1",
+      "feeder": "PE5",
+      "due_date": "2026-01-26",
+      "expected_eur": "20000.00",
+      "received_eur": "20000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2026Q1",
+      "feeder": "PD1",
+      "due_date": "2026-01-26",
+      "expected_eur": "63750.00",
+      "received_eur": "63750.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2026Q1",
+      "feeder": "VC3",
+      "due_date": "2026-01-26",
+      "expected_eur": "30000.00",
+      "received_eur": "30000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2025Q4",
+      "feeder": "PD1",
+      "due_date": "2025-10-27",
+      "expected_eur": "111250.00",
+      "received_eur": "111250.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2025Q4",
+      "feeder": "PE5",
+      "due_date": "2025-10-27",
+      "expected_eur": "22500.00",
+      "received_eur": "22500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2025Q4",
+      "feeder": "VC3",
+      "due_date": "2025-10-27",
+      "expected_eur": "40000.00",
+      "received_eur": "40000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2025Q3",
+      "feeder": "PE5",
+      "due_date": "2025-07-28",
+      "expected_eur": "30000.00",
+      "received_eur": "30000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PD1-2025Q3",
+      "feeder": "PD1",
+      "due_date": "2025-07-28",
+      "expected_eur": "160000.00",
+      "received_eur": "160000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2025Q3",
+      "feeder": "VC3",
+      "due_date": "2025-07-28",
+      "expected_eur": "42500.00",
+      "received_eur": "42500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2025Q2",
+      "feeder": "VC3",
+      "due_date": "2025-04-28",
+      "expected_eur": "45000.00",
+      "received_eur": "45000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2025Q2",
+      "feeder": "PE5",
+      "due_date": "2025-04-28",
+      "expected_eur": "37500.00",
+      "received_eur": "37500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2025Q1",
+      "feeder": "PE5",
+      "due_date": "2025-01-27",
+      "expected_eur": "43750.00",
+      "received_eur": "43750.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2025Q1",
+      "feeder": "VC3",
+      "due_date": "2025-01-27",
+      "expected_eur": "57500.00",
+      "received_eur": "57500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2024Q4",
+      "feeder": "VC3",
+      "due_date": "2024-10-28",
+      "expected_eur": "57500.00",
+      "received_eur": "57500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2024Q4",
+      "feeder": "PE5",
+      "due_date": "2024-10-28",
+      "expected_eur": "58750.00",
+      "received_eur": "58750.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2024Q3",
+      "feeder": "PE5",
+      "due_date": "2024-07-26",
+      "expected_eur": "71250.00",
+      "received_eur": "71250.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2024Q3",
+      "feeder": "VC3",
+      "due_date": "2024-07-26",
+      "expected_eur": "65000.00",
+      "received_eur": "65000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "PE5-2024Q2",
+      "feeder": "PE5",
+      "due_date": "2024-04-26",
+      "expected_eur": "96250.00",
+      "received_eur": "96250.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2024Q2",
+      "feeder": "VC3",
+      "due_date": "2024-04-26",
+      "expected_eur": "85000.00",
+      "received_eur": "85000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2024Q1",
+      "feeder": "VC3",
+      "due_date": "2024-01-26",
+      "expected_eur": "100000.00",
+      "received_eur": "100000.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    },
+    {
+      "call_id": "VC3-2023Q4",
+      "feeder": "VC3",
+      "due_date": "2023-10-26",
+      "expected_eur": "125000.00",
+      "received_eur": "250000.00",
+      "provisional_eur": "0",
+      "status": "duplicate"
+    },
+    {
+      "call_id": "VC3-2023Q3",
+      "feeder": "VC3",
+      "due_date": "2023-07-26",
+      "expected_eur": "157500.00",
+      "received_eur": "157500.00",
+      "provisional_eur": "0",
+      "status": "paid"
+    }
+  ],
+  "breaks": [
+    {
+      "break_id": "f57bada09d8a512a4a9fe03f83c969cd",
+      "kind": "payment_duplicate",
+      "owner": "operations",
+      "feeder": "VC3",
+      "fund": null,
+      "client_key": "ck_bd6109e2ef2b6c4b",
+      "reference": "VC3-2023Q4",
+      "expected_eur": "125000.00",
+      "actual_eur": "250000.00",
+      "difference_eur": "125000.00",
+      "opened_on": "2023-10-23",
+      "age_days": 1099,
+      "detail": "Paid the same call twice: refund one payment.",
+      "last_action": "open",
+      "last_note": null,
+      "last_actor": null,
+      "last_action_at": null,
+      "status": "open"
+    }
+  ]
+}

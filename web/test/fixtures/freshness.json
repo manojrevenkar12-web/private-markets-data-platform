@@ -1,0 +1,220 @@
+{
+  "feeds": [
+    {
+      "source": "bank_statement",
+      "feed": "PD1",
+      "label": "Northlake Private Debt I",
+      "latest": "2026-10-23",
+      "last_received_on": "2026-10-23",
+      "due": "2026-10-26",
+      "status": "fresh"
+    },
+    {
+      "source": "bank_statement",
+      "feed": "PE5",
+      "label": "Northlake Private Equity V",
+      "latest": "2026-10-23",
+      "last_received_on": "2026-10-23",
+      "due": "2026-10-26",
+      "status": "fresh"
+    },
+    {
+      "source": "bank_statement",
+      "feed": "VC3",
+      "label": "Northlake Venture III",
+      "latest": "2026-10-23",
+      "last_received_on": "2026-10-23",
+      "due": "2026-10-26",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "HAL2",
+      "label": "Halvard Mid-Market II",
+      "latest": "2026-03-31",
+      "last_received_on": "2026-05-21",
+      "due": "2026-06-30",
+      "status": "late"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "AUR7",
+      "label": "Aurora Buyout Fund VII",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-09-01",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "BAS2",
+      "label": "Bastion Senior Debt II",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-31",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "CRE4",
+      "label": "Crestline Direct Lending IV",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-03",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "FJD3",
+      "label": "Fjord Secondaries III",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-07-28",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "KES4",
+      "label": "Kestrel European Buyout IV",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-09-03",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "LUM5",
+      "label": "Lumen Ventures V",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-24",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "MER3",
+      "label": "Meridian Infrastructure Debt III",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-31",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "NOV3",
+      "label": "Novara Growth III",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-31",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "ORI9",
+      "label": "Orion Global Partners IX",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-03",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "SPR2",
+      "label": "Spree Seed II",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-13",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "gp_statement",
+      "feed": "TID1",
+      "label": "Tidewater Climate Tech I",
+      "latest": "2026-06-30",
+      "last_received_on": "2026-08-20",
+      "due": "2026-06-30",
+      "status": "fresh"
+    },
+    {
+      "source": "payment_events",
+      "feed": "PD1",
+      "label": "Northlake Private Debt I",
+      "latest": "2026-10-26",
+      "last_received_on": "2026-10-26",
+      "due": "2026-10-25",
+      "status": "fresh"
+    },
+    {
+      "source": "payment_events",
+      "feed": "PE5",
+      "label": "Northlake Private Equity V",
+      "latest": "2026-10-26",
+      "last_received_on": "2026-10-26",
+      "due": "2026-10-25",
+      "status": "fresh"
+    },
+    {
+      "source": "payment_events",
+      "feed": "VC3",
+      "label": "Northlake Venture III",
+      "latest": "2026-10-26",
+      "last_received_on": "2026-10-26",
+      "due": "2026-10-25",
+      "status": "fresh"
+    }
+  ],
+  "quarantine": [
+    {
+      "file_id": 606,
+      "source": "gp_statement",
+      "path": "gp_statements/20251209_lumen-ventures_4e5307.pdf",
+      "received_on": "2025-12-09",
+      "rule": "no_text_layer",
+      "detail": "the PDF has no text layer (a scan); ask the manager for the original",
+      "at": "2026-10-26T18:50:50.241205+01:00"
+    }
+  ],
+  "duplicates": [
+    {
+      "path": "gp_statements/20260202_fjord-capital_329635_copy.csv",
+      "same_as": "gp_statements/20260202_fjord-capital_329635.csv",
+      "file_id": 612,
+      "seen_at": "2026-10-26T18:50:50.309150+01:00"
+    }
+  ],
+  "dead_events": [],
+  "holds": [
+    {
+      "file_id": 638,
+      "fund": "ORI9",
+      "fund_name": "Orion Global Partners IX",
+      "period_end": "2026-06-30",
+      "version": 1,
+      "received_on": "2026-08-03",
+      "hold_reason": "commitment differs from the agreed 11649000.00; paid-in or distributions fell against the previous quarter",
+      "nav": "10691.43",
+      "prev_nav": "11024022.31",
+      "unexplained_move": "0.0980",
+      "currency": "USD",
+      "file_path": "gp_statements/20260803_orion-investment-management_2fba2f.csv"
+    }
+  ],
+  "erasures": [
+    {
+      "request_id": "ER-0002",
+      "client_key": "ck_a6680f87d258c665",
+      "requested_on": "2026-10-22",
+      "status": "retention_hold",
+      "reason": "investor: records kept for the statutory retention period (GwG \u00a78, HGB \u00a7257)",
+      "decided_at": "2026-10-26T18:50:49.368923+01:00"
+    },
+    {
+      "request_id": "ER-0001",
+      "client_key": "ck_0557f495cd1ef175",
+      "requested_on": "2026-10-20",
+      "status": "erased",
+      "reason": "prospect without commitments: personal data deleted",
+      "decided_at": "2026-10-26T18:50:49.368923+01:00"
+    }
+  ]
+}

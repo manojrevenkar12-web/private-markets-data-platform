@@ -1,0 +1,44 @@
+[
+  {
+    "call_id": "PD1-2026Q4",
+    "feeder": "PD1",
+    "notice_date": "2026-10-12",
+    "due_date": "2026-10-26",
+    "clients": 196,
+    "expected_eur": "747000.00",
+    "booked_eur": "529620.00",
+    "arrived_since_statement_eur": "158040.00",
+    "outstanding_eur": "59340.00",
+    "clients_not_paid": 16,
+    "last_event_at": "2026-10-26T19:50:06+01:00",
+    "last_statement_on": "2026-10-23"
+  },
+  {
+    "call_id": "PE5-2026Q4",
+    "feeder": "PE5",
+    "notice_date": "2026-10-12",
+    "due_date": "2026-10-26",
+    "clients": 272,
+    "expected_eur": "1411375.00",
+    "booked_eur": "1066800.00",
+    "arrived_since_statement_eur": "244125.00",
+    "outstanding_eur": "100450.00",
+    "clients_not_paid": 24,
+    "last_event_at": "2026-10-26T19:29:07+01:00",
+    "last_statement_on": "2026-10-23"
+  },
+  {
+    "call_id": "VC3-2026Q4",
+    "feeder": "VC3",
+    "notice_date": "2026-10-12",
+    "due_date": "2026-10-26",
+    "clients": 213,
+    "expected_eur": "1143625.00",
+    "booked_eur": "810075.00",
+    "arrived_since_statement_eur": "260575.00",
+    "outstanding_eur": "72975.00",
+    "clients_not_paid": 18,
+    "last_event_at": "2026-10-26T19:18:24+01:00",
+    "last_statement_on": "2026-10-23"
+  }
+]

@@ -1,0 +1,648 @@
+{
+  "nodes": [
+    {
+      "id": "model.private_markets.int_feeder_quarters",
+      "name": "int_feeder_quarters",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_expected_payments",
+      "name": "int_expected_payments",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_statement_checks",
+      "name": "int_statement_checks",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_payment_status",
+      "name": "int_payment_status",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_statement_versions",
+      "name": "int_statement_versions",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_fund_quarters",
+      "name": "int_fund_quarters",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_receipts",
+      "name": "int_receipts",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.int_receipt_matching",
+      "name": "int_receipt_matching",
+      "layer": "intermediate",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.fct_client_lookthrough",
+      "name": "fct_client_lookthrough",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.statement_holds",
+      "name": "statement_holds",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.fct_fund_nav",
+      "name": "fct_fund_nav",
+      "layer": "marts",
+      "description": "Target fund NAV per quarter, reported or estimated."
+    },
+    {
+      "id": "model.private_markets.nav_restatements",
+      "name": "nav_restatements",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.fct_payment_status",
+      "name": "fct_payment_status",
+      "layer": "marts",
+      "description": "One row per client and capital call."
+    },
+    {
+      "id": "model.private_markets.fct_client_positions",
+      "name": "fct_client_positions",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.data_freshness",
+      "name": "data_freshness",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.fct_feeder_nav",
+      "name": "fct_feeder_nav",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.dim_clients",
+      "name": "dim_clients",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.client_performance",
+      "name": "client_performance",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.recon_breaks",
+      "name": "recon_breaks",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.cash_now",
+      "name": "cash_now",
+      "layer": "marts",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_fx_rates",
+      "name": "stg_fx_rates",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_target_commitments",
+      "name": "stg_target_commitments",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_feeders",
+      "name": "stg_feeders",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_commitments",
+      "name": "stg_commitments",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_bank_entries",
+      "name": "stg_bank_entries",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_payment_events",
+      "name": "stg_payment_events",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_target_funds",
+      "name": "stg_target_funds",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_distributions",
+      "name": "stg_distributions",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_bank_statements",
+      "name": "stg_bank_statements",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_statements",
+      "name": "stg_statements",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_capital_calls",
+      "name": "stg_capital_calls",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_client_accounts",
+      "name": "stg_client_accounts",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "model.private_markets.stg_clients",
+      "name": "stg_clients",
+      "layer": "staging",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.gp_statements",
+      "name": "raw.gp_statements",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.bank_statements",
+      "name": "raw.bank_statements",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.bank_entries",
+      "name": "raw.bank_entries",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.payment_events",
+      "name": "raw.payment_events",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.clients",
+      "name": "raw.clients",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.client_accounts",
+      "name": "raw.client_accounts",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.commitments",
+      "name": "raw.commitments",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.capital_calls",
+      "name": "raw.capital_calls",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.distributions",
+      "name": "raw.distributions",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.target_commitments",
+      "name": "raw.target_commitments",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.fx_rates",
+      "name": "raw.fx_rates",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.feeders",
+      "name": "raw.feeders",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.raw.target_funds",
+      "name": "raw.target_funds",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.files",
+      "name": "ops.files",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.file_names",
+      "name": "ops.file_names",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.quarantine",
+      "name": "ops.quarantine",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.break_actions",
+      "name": "ops.break_actions",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.statement_releases",
+      "name": "ops.statement_releases",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.erasure_requests",
+      "name": "ops.erasure_requests",
+      "layer": "source",
+      "description": ""
+    },
+    {
+      "id": "source.private_markets.ops.dead_events",
+      "name": "ops.dead_events",
+      "layer": "source",
+      "description": ""
+    }
+  ],
+  "edges": [
+    {
+      "from": "model.private_markets.int_fund_quarters",
+      "to": "model.private_markets.int_feeder_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_commitments",
+      "to": "model.private_markets.int_feeder_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_bank_statements",
+      "to": "model.private_markets.int_feeder_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_capital_calls",
+      "to": "model.private_markets.int_expected_payments"
+    },
+    {
+      "from": "model.private_markets.stg_commitments",
+      "to": "model.private_markets.int_expected_payments"
+    },
+    {
+      "from": "source.private_markets.ops.statement_releases",
+      "to": "model.private_markets.int_statement_checks"
+    },
+    {
+      "from": "model.private_markets.int_statement_versions",
+      "to": "model.private_markets.int_statement_checks"
+    },
+    {
+      "from": "model.private_markets.stg_target_commitments",
+      "to": "model.private_markets.int_statement_checks"
+    },
+    {
+      "from": "model.private_markets.int_receipt_matching",
+      "to": "model.private_markets.int_payment_status"
+    },
+    {
+      "from": "model.private_markets.int_expected_payments",
+      "to": "model.private_markets.int_payment_status"
+    },
+    {
+      "from": "model.private_markets.stg_statements",
+      "to": "model.private_markets.int_statement_versions"
+    },
+    {
+      "from": "model.private_markets.stg_statements",
+      "to": "model.private_markets.int_fund_quarters"
+    },
+    {
+      "from": "model.private_markets.int_statement_checks",
+      "to": "model.private_markets.int_fund_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_fx_rates",
+      "to": "model.private_markets.int_fund_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_bank_entries",
+      "to": "model.private_markets.int_fund_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_target_funds",
+      "to": "model.private_markets.int_fund_quarters"
+    },
+    {
+      "from": "model.private_markets.stg_bank_entries",
+      "to": "model.private_markets.int_receipts"
+    },
+    {
+      "from": "model.private_markets.stg_payment_events",
+      "to": "model.private_markets.int_receipts"
+    },
+    {
+      "from": "model.private_markets.int_receipts",
+      "to": "model.private_markets.int_receipt_matching"
+    },
+    {
+      "from": "model.private_markets.stg_client_accounts",
+      "to": "model.private_markets.int_receipt_matching"
+    },
+    {
+      "from": "model.private_markets.int_expected_payments",
+      "to": "model.private_markets.int_receipt_matching"
+    },
+    {
+      "from": "model.private_markets.int_feeder_quarters",
+      "to": "model.private_markets.fct_client_lookthrough"
+    },
+    {
+      "from": "model.private_markets.fct_client_positions",
+      "to": "model.private_markets.fct_client_lookthrough"
+    },
+    {
+      "from": "model.private_markets.fct_fund_nav",
+      "to": "model.private_markets.fct_client_lookthrough"
+    },
+    {
+      "from": "model.private_markets.int_statement_checks",
+      "to": "model.private_markets.statement_holds"
+    },
+    {
+      "from": "model.private_markets.stg_target_funds",
+      "to": "model.private_markets.statement_holds"
+    },
+    {
+      "from": "model.private_markets.int_fund_quarters",
+      "to": "model.private_markets.fct_fund_nav"
+    },
+    {
+      "from": "model.private_markets.stg_target_funds",
+      "to": "model.private_markets.fct_fund_nav"
+    },
+    {
+      "from": "model.private_markets.int_statement_versions",
+      "to": "model.private_markets.nav_restatements"
+    },
+    {
+      "from": "model.private_markets.int_payment_status",
+      "to": "model.private_markets.fct_payment_status"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.fct_payment_status"
+    },
+    {
+      "from": "model.private_markets.stg_commitments",
+      "to": "model.private_markets.fct_client_positions"
+    },
+    {
+      "from": "model.private_markets.int_receipt_matching",
+      "to": "model.private_markets.fct_client_positions"
+    },
+    {
+      "from": "model.private_markets.int_expected_payments",
+      "to": "model.private_markets.fct_client_positions"
+    },
+    {
+      "from": "model.private_markets.stg_distributions",
+      "to": "model.private_markets.fct_client_positions"
+    },
+    {
+      "from": "model.private_markets.int_feeder_quarters",
+      "to": "model.private_markets.fct_client_positions"
+    },
+    {
+      "from": "model.private_markets.stg_target_funds",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.stg_statements",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.stg_payment_events",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.stg_bank_statements",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.stg_capital_calls",
+      "to": "model.private_markets.data_freshness"
+    },
+    {
+      "from": "model.private_markets.int_feeder_quarters",
+      "to": "model.private_markets.fct_feeder_nav"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.fct_feeder_nav"
+    },
+    {
+      "from": "model.private_markets.stg_clients",
+      "to": "model.private_markets.dim_clients"
+    },
+    {
+      "from": "model.private_markets.stg_commitments",
+      "to": "model.private_markets.dim_clients"
+    },
+    {
+      "from": "model.private_markets.fct_client_positions",
+      "to": "model.private_markets.client_performance"
+    },
+    {
+      "from": "model.private_markets.int_receipt_matching",
+      "to": "model.private_markets.client_performance"
+    },
+    {
+      "from": "model.private_markets.int_expected_payments",
+      "to": "model.private_markets.client_performance"
+    },
+    {
+      "from": "model.private_markets.stg_distributions",
+      "to": "model.private_markets.client_performance"
+    },
+    {
+      "from": "model.private_markets.stg_commitments",
+      "to": "model.private_markets.client_performance"
+    },
+    {
+      "from": "source.private_markets.ops.break_actions",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.int_payment_status",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.int_receipt_matching",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.statement_holds",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.stg_target_funds",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.int_fund_quarters",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.stg_fx_rates",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.stg_bank_entries",
+      "to": "model.private_markets.recon_breaks"
+    },
+    {
+      "from": "model.private_markets.stg_payment_events",
+      "to": "model.private_markets.cash_now"
+    },
+    {
+      "from": "model.private_markets.stg_bank_statements",
+      "to": "model.private_markets.cash_now"
+    },
+    {
+      "from": "model.private_markets.int_expected_payments",
+      "to": "model.private_markets.cash_now"
+    },
+    {
+      "from": "model.private_markets.int_payment_status",
+      "to": "model.private_markets.cash_now"
+    },
+    {
+      "from": "source.private_markets.raw.fx_rates",
+      "to": "model.private_markets.stg_fx_rates"
+    },
+    {
+      "from": "source.private_markets.raw.target_commitments",
+      "to": "model.private_markets.stg_target_commitments"
+    },
+    {
+      "from": "source.private_markets.raw.feeders",
+      "to": "model.private_markets.stg_feeders"
+    },
+    {
+      "from": "source.private_markets.raw.commitments",
+      "to": "model.private_markets.stg_commitments"
+    },
+    {
+      "from": "source.private_markets.raw.bank_entries",
+      "to": "model.private_markets.stg_bank_entries"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.stg_bank_entries"
+    },
+    {
+      "from": "source.private_markets.raw.bank_entries",
+      "to": "model.private_markets.stg_payment_events"
+    },
+    {
+      "from": "source.private_markets.raw.payment_events",
+      "to": "model.private_markets.stg_payment_events"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.stg_payment_events"
+    },
+    {
+      "from": "source.private_markets.raw.target_funds",
+      "to": "model.private_markets.stg_target_funds"
+    },
+    {
+      "from": "source.private_markets.raw.distributions",
+      "to": "model.private_markets.stg_distributions"
+    },
+    {
+      "from": "source.private_markets.raw.bank_statements",
+      "to": "model.private_markets.stg_bank_statements"
+    },
+    {
+      "from": "model.private_markets.stg_feeders",
+      "to": "model.private_markets.stg_bank_statements"
+    },
+    {
+      "from": "source.private_markets.raw.gp_statements",
+      "to": "model.private_markets.stg_statements"
+    },
+    {
+      "from": "source.private_markets.ops.files",
+      "to": "model.private_markets.stg_statements"
+    },
+    {
+      "from": "source.private_markets.raw.capital_calls",
+      "to": "model.private_markets.stg_capital_calls"
+    },
+    {
+      "from": "source.private_markets.raw.client_accounts",
+      "to": "model.private_markets.stg_client_accounts"
+    },
+    {
+      "from": "source.private_markets.raw.clients",
+      "to": "model.private_markets.stg_clients"
+    }
+  ]
+}

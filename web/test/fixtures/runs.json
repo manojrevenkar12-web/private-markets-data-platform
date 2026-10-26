@@ -1,0 +1,141 @@
+[
+  {
+    "run_id": "20261026_185114960322",
+    "status": "published",
+    "build_schema": "build_20261026_185114960322",
+    "as_of": "2026-10-26",
+    "started_at": "2026-10-26T18:51:40.082214+01:00",
+    "finished_at": "2026-10-26T18:51:49.548199+01:00",
+    "gates": [
+      {
+        "name": "dbt_tests",
+        "count": 0,
+        "detail": "every model built and every test passed",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "marts_not_empty",
+        "count": 0,
+        "detail": "every client-facing mart has rows",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "nav_drift",
+        "count": 0,
+        "detail": "no fund NAV moved more than 25% without a new statement",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "unmatched_receipts",
+        "count": 3,
+        "detail": "3 receipts nobody has placed for more than 10 days",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "overdue_calls",
+        "count": 33,
+        "detail": "33 capital call payments overdue",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "late_statements",
+        "count": 1,
+        "detail": "1 statements past due; their NAV is estimated",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "statement_holds",
+        "count": 1,
+        "detail": "1 statements held back by their checks; their quarter is estimated",
+        "passed": false,
+        "severity": "warn"
+      }
+    ],
+    "counts": {
+      "cash_now": 3,
+      "dim_clients": 440,
+      "fct_fund_nav": 117,
+      "recon_breaks": 174,
+      "data_freshness": 18,
+      "fct_feeder_nav": 28,
+      "statement_holds": 1,
+      "nav_restatements": 1,
+      "client_performance": 681,
+      "fct_payment_status": 7150,
+      "fct_client_positions": 6469,
+      "fct_client_lookthrough": 3481
+    }
+  },
+  {
+    "run_id": "20261026_185044846965",
+    "status": "published",
+    "build_schema": "build_20261026_185044846965",
+    "as_of": "2026-10-26",
+    "started_at": "2026-10-26T18:51:13.990061+01:00",
+    "finished_at": "2026-10-26T18:51:14.050503+01:00",
+    "gates": [
+      {
+        "name": "dbt_tests",
+        "count": 0,
+        "detail": "every model built and every test passed",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "marts_not_empty",
+        "count": 0,
+        "detail": "every client-facing mart has rows",
+        "passed": true,
+        "severity": "block"
+      },
+      {
+        "name": "unmatched_receipts",
+        "count": 3,
+        "detail": "3 receipts nobody has placed for more than 10 days",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "overdue_calls",
+        "count": 33,
+        "detail": "33 capital call payments overdue",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "late_statements",
+        "count": 1,
+        "detail": "1 statements past due; their NAV is estimated",
+        "passed": false,
+        "severity": "warn"
+      },
+      {
+        "name": "statement_holds",
+        "count": 1,
+        "detail": "1 statements held back by their checks; their quarter is estimated",
+        "passed": false,
+        "severity": "warn"
+      }
+    ],
+    "counts": {
+      "cash_now": 3,
+      "dim_clients": 440,
+      "fct_fund_nav": 117,
+      "recon_breaks": 174,
+      "data_freshness": 18,
+      "fct_feeder_nav": 28,
+      "statement_holds": 1,
+      "nav_restatements": 1,
+      "client_performance": 681,
+      "fct_payment_status": 7150,
+      "fct_client_positions": 6469,
+      "fct_client_lookthrough": 3481
+    }
+  }
+]

@@ -1,0 +1,160 @@
+/*
+ * Design tokens: every colour, size, space, radius and duration the console uses. Components carry none of
+ * their own.
+ *
+ * The console's one rule about numbers: a figure is reported (from a statement or the bank), estimated (carried
+ * forward because a statement is late or held) or provisional (an instant notification the bank has not yet
+ * booked). Each has its own mark, everywhere, so nobody quotes an estimate as a fact.
+ *
+ * Type: Public Sans for the interface; Fraunces for headings and headline figures.
+ */
+:root {
+  color-scheme: light;
+
+  --paper: #eef2f6;
+  --surface: #ffffff;
+  --surface-sunk: #f5f7fa;
+  --ink: #111a2b;
+  --ink-soft: #46536a;
+  --ink-faint: #67748a;
+  --rule: #d3dbe5;
+  --rule-strong: #a5b1c2;
+
+  --accent: #2f3bd6;
+  --accent-ink: #ffffff;
+  --accent-wash: #e6e8fb;
+
+  --pass: #0f7b62;
+  --pass-wash: #def2ec;
+  --warn: #8a5a0b;
+  --warn-fill: #f2c063;
+  --warn-wash: #fbf0d8;
+  --block: #c2253c;
+  --block-wash: #fae3e6;
+
+  --estimate: #6d5fa6;
+  --estimate-wash: #ece9f6;
+  --provisional: #2f7fa6;
+
+  --focus: #2f3bd6;
+  --scrim: rgb(17 26 43 / 0.5);
+
+  --font-ui: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
+  --font-display: "Fraunces Variable", "Fraunces", Georgia, serif;
+
+  /* type scale, ratio 1.25 from 15px */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.375rem;
+  --text-4xl: 3rem;
+
+  --leading-tight: 1.12;
+  --leading-body: 1.5;
+
+  --weight-body: 400;
+  --weight-strong: 600;
+  --weight-display: 560;
+  --display-soft: 60;
+  --display-opsz: 72;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --gutter: 1rem;
+  --measure: 70ch;
+  --content-max: 84rem;
+  --control-height: 2.375rem;
+
+  --radius-control: 4px;
+  --radius-panel: 8px;
+  --radius-pill: 999px;
+
+  --border: 1px solid var(--rule);
+  --border-strong: 1px solid var(--rule-strong);
+  --lift: 0 1px 2px rgb(17 26 43 / 0.06), 0 12px 32px -20px rgb(17 26 43 / 0.35);
+
+  --ribbon-height: 7rem;
+  --ribbon-column: 1.75rem;
+  --meter-height: 0.5rem;
+  --dot: 0.5625rem;
+  --hatch-line: 1.5px;
+  --hatch-gap: 5px;
+
+  --duration-quick: 140ms;
+  --duration-move: 380ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (min-width: 48rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0d131d;
+    --surface: #151d2a;
+    --surface-sunk: #111824;
+    --ink: #e7ecf3;
+    --ink-soft: #aeb9c9;
+    --ink-faint: #8a96a8;
+    --rule: #263244;
+    --rule-strong: #3d4b60;
+    --accent: #8d95ff;
+    --accent-ink: #0d131d;
+    --accent-wash: #1f2550;
+    --pass: #4cc9a5;
+    --pass-wash: #10302a;
+    --warn: #f2c063;
+    --warn-fill: #d9a441;
+    --warn-wash: #342810;
+    --block: #ff7a8a;
+    --block-wash: #3b1820;
+    --estimate: #b3a6ee;
+    --estimate-wash: #262040;
+    --provisional: #7cc3e6;
+    --focus: #8d95ff;
+    --scrim: rgb(0 0 0 / 0.6);
+    --lift: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -20px rgb(0 0 0 / 0.9);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0d131d;
+  --surface: #151d2a;
+  --surface-sunk: #111824;
+  --ink: #e7ecf3;
+  --ink-soft: #aeb9c9;
+  --ink-faint: #8a96a8;
+  --rule: #263244;
+  --rule-strong: #3d4b60;
+  --accent: #8d95ff;
+  --accent-ink: #0d131d;
+  --accent-wash: #1f2550;
+  --pass: #4cc9a5;
+  --pass-wash: #10302a;
+  --warn: #f2c063;
+  --warn-fill: #d9a441;
+  --warn-wash: #342810;
+  --block: #ff7a8a;
+  --block-wash: #3b1820;
+  --estimate: #b3a6ee;
+  --estimate-wash: #262040;
+  --provisional: #7cc3e6;
+  --focus: #8d95ff;
+  --scrim: rgb(0 0 0 / 0.6);
+  --lift: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 32px -20px rgb(0 0 0 / 0.9);
+}
