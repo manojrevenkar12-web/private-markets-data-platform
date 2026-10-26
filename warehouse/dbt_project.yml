@@ -1,0 +1,33 @@
+name: private_markets
+version: "1.0.0"
+config-version: 2
+profile: private_markets
+
+model-paths: [models]
+macro-paths: [macros]
+test-paths: [tests]
+target-path: target
+clean-targets: [target, logs]
+
+on-run-start:
+  - "{{ create_util_functions() }}"
+
+vars:
+  # Overridden on every run by pmd from config/platform.yaml and the business date; these are for `dbt parse`.
+  as_of: "2026-10-26"
+  statement_due_days: 90
+  nav_move_threshold: 0.40
+  overdue_grace_days: 5
+  duplicate_window_days: 10
+  amount_tolerance: 0.01
+  unmatched_days: 10
+
+models:
+  private_markets:
+    +schema: ""
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table

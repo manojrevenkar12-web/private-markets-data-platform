@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: fct_payment_status
+    description: One row per client and capital call.
+    columns:
+      - name: expected_id
+        data_tests: [unique, not_null]
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [paid, paid_late, part_paid, short, over, duplicate, overdue, open]
+      - name: client_key
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_clients')
+                field: client_key
+
+  - name: fct_fund_nav
+    description: Target fund NAV per quarter, reported or estimated.
+    data_tests:
+      - dbt_utils_unique_combination:
+          arguments:
+            columns: [fund, quarter_end]
+    columns:
+      - name: nav_eur
+        data_tests: [not_null]
+      - name: nav_source
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [statement, estimated]
+
+  - name: fct_feeder_nav
+    data_tests:
+      - dbt_utils_unique_combination:
+          arguments:
+            columns: [feeder, quarter_end]
+
+  - name: fct_client_positions
+    data_tests:
+      - dbt_utils_unique_combination:
+          arguments:
+            columns: [client_key, feeder, quarter_end]
+    columns:
+      - name: share
+        data_tests: [not_null]
+
+  - name: client_performance
+    data_tests:
+      - dbt_utils_unique_combination:
+          arguments:
+            columns: [client_key, feeder]
+    columns:
+      - name: tvpi
+        data_tests:
+          - in_range:
+              arguments:
+                low: 0
+                high: 10
+
+  - name: recon_breaks
+    columns:
+      - name: break_id
+        data_tests: [unique, not_null]
+      - name: kind
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [payment_overdue, payment_short, payment_over, payment_duplicate, unmatched_receipt,
+                         statement_held, statement_late, gp_cash_mismatch]
+      - name: owner
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [operations, fund_accounting]
+
+  - name: dim_clients
+    columns:
+      - name: client_key
+        data_tests: [unique, not_null]
+
+  - name: data_freshness
+    columns:
+      - name: status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [fresh, late, missing]

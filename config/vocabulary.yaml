@@ -1,0 +1,16 @@
+# How fund managers label the fields of a capital account statement, in English and German. The statement
+# parser reads labels, not layouts: a new manager's format usually needs a synonym here, not new code.
+fields:
+  commitment: [total commitment, commitment, capital commitment, committed capital, zeichnungsbetrag, kapitalzusage, zusage, gesamtzusage, total_commitment, commitment amount]
+  paid_in: [contributions to date, paid-in capital, paid in capital, paid_in, called capital, called_capital, contributed, cumulative contributions, capital called, drawn capital, eingezahltes kapital, abgerufenes kapital, einzahlungen kumuliert, einzahlungen]
+  distributed: [distributions to date, distributions, distributed, cumulative distributions, total distributions, ausschüttungen kumuliert, ausschüttungen, ausschuettungen, rückflüsse]
+  nav: [capital account balance (nav), capital account balance, net asset value, nav, capital_account, ending capital account, closing capital account, nettoinventarwert (nav), nettoinventarwert, kapitalkonto, inventarwert, wert der beteiligung]
+  unfunded: [unfunded commitment, remaining commitment, unfunded, offene einzahlungsverpflichtung, nicht abgerufene zusage, offene zusage]
+  period_end: [for the period ended, period ended, period end, as of, as at, reference date, reference_date, as_of, period_end, quarter ended, stichtag, kapitalkontoauszug zum, zum, berichtsstichtag]
+  statement_date: [statement date, report date, issued, statement_date, date of issue, erstellt am, ausstellungsdatum, datum]
+  currency: [all amounts in, currency, ccy, währung, waehrung, beträge in, amounts in]
+  fund: [fund, fund_name, fund name, fonds, fondsname]
+units:
+  thousands: ["in thousands", "'000", "000s", "teur", "tsd", "in tsd", "tusd", "k eur"]
+  millions: ["in millions", "mio", "meur", "musd", "mn"]
+currencies: [EUR, USD, GBP, CHF]

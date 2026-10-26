@@ -1,0 +1,7 @@
+source: payments-topic
+required: [event_id, type, account_iban, amount, currency, received_at]
+rules:
+  - {name: type_known, check: "type == payment.received"}
+  - {name: currency_eur, check: "currency == EUR"}
+  - {name: amount_positive, check: "amount > 0"}
+  - {name: account_known, check: "account is a feeder collection account"}

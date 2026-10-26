@@ -1,0 +1,55 @@
+# Every threshold the platform decides with. Code reads these; it does not carry its own numbers.
+
+freshness:
+  # Days after a quarter end by which each GP statement is due (most limited partnership agreements: 60–90).
+  gp_statement_days: 90
+  # Business days after a booking by which the custodian's statement is due.
+  bank_statement_business_days: 2
+  # Days without any payment event on a collection account during an open capital call before it counts as stale.
+  payment_events_hours: 24
+
+gates:
+  # Checks after every build, before anything is published. `block` stops the publish; `warn` publishes and
+  # lists the finding on the data health page.
+  statement_unexplained_move:
+    # A statement whose NAV moves more than this share in one quarter, beyond what its own calls and
+    # distributions explain, is held back (typical cause: amounts in thousands without saying so). The fund's
+    # NAV for that quarter is estimated until a person releases or replaces the statement.
+    threshold: 0.40
+    severity: hold_row
+  client_nav_drift:
+    # A client's published NAV may not move more than this share against the last publish unless a new
+    # statement or a restatement explains it.
+    threshold: 0.25
+    severity: block
+  dbt_tests:
+    severity: block
+  unmatched_receipts:
+    # Money nobody can place, older than this many days.
+    days: 10
+    severity: warn
+  overdue_calls:
+    severity: warn
+  late_statements:
+    severity: warn
+
+reconciliation:
+  amount_tolerance_eur: 0.01
+  # Days after the due date before an unpaid capital call counts as overdue.
+  overdue_grace_days: 5
+  # A second payment with the same reference and amount within this many days is a duplicate.
+  duplicate_window_days: 10
+
+publish:
+  # Audited builds kept after a publish, for rollback and for diffs.
+  keep_builds: 3
+
+privacy:
+  # Columns that are personal data. They live only in the pii schema; everything else uses the client key.
+  personal_columns: [name, email, birth_date, iban, tax_id, street, phone]
+  # Roles allowed to resolve a client key to a person; every resolution is logged.
+  reveal_roles: [operations]
+
+held_out:
+  # Fields of a capital account statement the parser has to read right.
+  fields: [fund, period_end, currency, commitment, paid_in, distributed, nav]

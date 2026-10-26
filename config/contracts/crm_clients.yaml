@@ -1,0 +1,7 @@
+source: crm
+required: [client_id, first_name, last_name, iban, segment, status]
+personal: [first_name, last_name, email, phone, birth_date, street, postal_code, city, iban, tax_id]
+rules:
+  - {name: client_id_format, check: "client_id matches C-NNNNNN"}
+  - {name: iban_checksum, check: "iban passes the mod-97 check"}
+  - {name: status_known, check: "status in client, prospect"}

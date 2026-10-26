@@ -1,0 +1,40 @@
+# The wealth manager's private-markets programmes (feeder funds its clients commit to) and the target funds
+# each feeder commits to. Names are invented. `statement` is how that fund's manager (GP) sends its quarterly
+# capital account statement; the parser does not use it, it reads whatever arrives.
+house: Northlake Wealth
+base_currency: EUR
+
+feeders:
+  PE5:
+    name: Northlake Private Equity V
+    strategy: Buyout and secondaries
+    first_close: 2024-03-01
+    min_ticket: 100000
+    collection_account: DE89370400440532013000
+    targets:
+      AUR7: {name: Aurora Buyout Fund VII, gp: Aurora Capital Partners, region: North America, strategy: Buyout, currency: USD, weight: 0.26, statement: pdf_en}
+      KES4: {name: Kestrel European Buyout IV, gp: Kestrel Partners, region: Europe, strategy: Buyout, currency: EUR, weight: 0.24, statement: xlsx_de}
+      FJD3: {name: Fjord Secondaries III, gp: Fjord Capital, region: Global, strategy: Secondaries, currency: EUR, weight: 0.20, statement: csv}
+      HAL2: {name: Halvard Mid-Market II, gp: Halvard Beteiligungen, region: DACH, strategy: Buyout, currency: EUR, weight: 0.15, statement: pdf_de}
+      ORI9: {name: Orion Global Partners IX, gp: Orion Investment Management, region: Global, strategy: Buyout, currency: USD, weight: 0.15, statement: csv}
+  VC3:
+    name: Northlake Venture III
+    strategy: Venture capital
+    first_close: 2023-06-01
+    min_ticket: 100000
+    collection_account: DE02120300000000202051
+    targets:
+      LUM5: {name: Lumen Ventures V, gp: Lumen Ventures, region: North America, strategy: Venture, currency: USD, weight: 0.30, statement: pdf_en}
+      SPR2: {name: Spree Seed II, gp: Spree Capital, region: DACH, strategy: Seed, currency: EUR, weight: 0.20, statement: xlsx_de}
+      NOV3: {name: Novara Growth III, gp: Novara Partners, region: Europe, strategy: Growth, currency: EUR, weight: 0.30, statement: pdf_en}
+      TID1: {name: Tidewater Climate Tech I, gp: Tidewater Ventures, region: Europe, strategy: Venture, currency: EUR, weight: 0.20, statement: csv}
+  PD1:
+    name: Northlake Private Debt I
+    strategy: Private debt
+    first_close: 2025-04-01
+    min_ticket: 20000
+    collection_account: DE44500105175407324931
+    targets:
+      CRE4: {name: Crestline Direct Lending IV, gp: Crestline Credit, region: Europe, strategy: Direct lending, currency: EUR, weight: 0.40, statement: csv}
+      BAS2: {name: Bastion Senior Debt II, gp: Bastion Kapital, region: DACH, strategy: Senior debt, currency: EUR, weight: 0.35, statement: pdf_de}
+      MER3: {name: Meridian Infrastructure Debt III, gp: Meridian Infra, region: Europe, strategy: Infrastructure debt, currency: EUR, weight: 0.25, statement: xlsx_de}

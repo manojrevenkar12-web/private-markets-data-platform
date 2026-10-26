@@ -1,0 +1,54 @@
+[project]
+name = "private-markets-data-platform"
+version = "0.1.0"
+description = "The data platform behind a wealth manager's private-markets funds of funds: messy GP statements in, client look-through and reconciled cash out."
+requires-python = ">=3.12"
+readme = "README.md"
+dependencies = [
+  "pyyaml>=6",
+  "sqlalchemy>=2.0",
+  "psycopg[binary]>=3.2",
+  "dbt-core>=1.10",
+  "dbt-postgres>=1.10",
+  "pypdf>=5",
+  "openpyxl>=3.1",
+  "lxml>=5",
+  "reportlab>=4",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
+  "pydantic>=2.7",
+  "python-multipart>=0.0.9",
+]
+
+[project.optional-dependencies]
+kafka = ["confluent-kafka>=2.4"]
+dev = ["pytest>=8", "httpx>=0.27", "ruff>=0.6", "mypy>=1.11", "types-PyYAML", "confluent-kafka>=2.4"]
+
+[project.scripts]
+pmd = "pmd.cli:main"
+pmd-sim = "pmd_sim.build:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003", "E501"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = false
+check_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["kafka: needs a Kafka broker (PMD_KAFKA_BOOTSTRAP)", "airflow: needs Apache Airflow installed"]

@@ -1,0 +1,7 @@
+source: camt053
+required: [account_iban, booking_date, amount, direction, bank_ref]
+rules:
+  - {name: account_known, check: "account is a feeder collection account in config/funds.yaml"}
+  - {name: balances_add_up, check: "opening balance + entries = closing balance"}
+  - {name: sequence_continuous, check: "statement sequence numbers have no gaps per account"}
+  - {name: booked_only, check: "entry status BOOK"}

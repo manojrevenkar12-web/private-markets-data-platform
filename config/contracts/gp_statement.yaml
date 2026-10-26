@@ -1,0 +1,12 @@
+# Contract for a quarterly capital account statement once parsed. A statement that breaks it goes to
+# quarantine with the rule it broke; nothing downstream sees it.
+source: gp_statement
+required: [fund, period_end, currency, commitment, paid_in, distributed, nav]
+rules:
+  - {name: currency_known, check: "currency in currencies"}
+  - {name: quarter_end, check: "period_end is the last day of a quarter"}
+  - {name: amounts_not_negative, check: "commitment, paid_in, distributed, nav >= 0"}
+  - {name: paid_in_within_commitment, check: "paid_in <= commitment * 1.02", note: "2 % for fees called outside the commitment"}
+  - {name: unfunded_adds_up, check: "abs(commitment - paid_in - unfunded) <= 0.005 * commitment when unfunded is stated"}
+  - {name: statement_after_period, check: "statement_date >= period_end when stated"}
+  - {name: fund_known, check: "fund matches a target fund in config/funds.yaml"}

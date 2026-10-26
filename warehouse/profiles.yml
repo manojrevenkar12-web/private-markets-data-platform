@@ -1,0 +1,14 @@
+# Every build goes into its own schema (write); tests and gates run there (audit); only then do the serving
+# views point at it (publish). pmd sets PMD_DBT_SCHEMA per run.
+private_markets:
+  target: pmd
+  outputs:
+    pmd:
+      type: postgres
+      host: "{{ env_var('PMD_DB_HOST', 'localhost') }}"
+      port: "{{ env_var('PMD_DB_PORT', '5432') | int }}"
+      user: "{{ env_var('PMD_DB_USER', 'pmd') }}"
+      password: "{{ env_var('PMD_DB_PASSWORD', 'pmd') }}"
+      dbname: "{{ env_var('PMD_DB_NAME', 'pmd') }}"
+      schema: "{{ env_var('PMD_DBT_SCHEMA', 'dev') }}"
+      threads: 4

@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Written by the pmd loaders after each file passed its contract. No personal data.
+    tables:
+      - name: gp_statements
+      - name: bank_statements
+      - name: bank_entries
+      - name: payment_events
+      - name: clients
+      - name: client_accounts
+      - name: commitments
+      - name: capital_calls
+      - name: distributions
+      - name: target_commitments
+      - name: fx_rates
+      - name: feeders
+      - name: target_funds
+  - name: ops
+    description: Operations' own records - file registry, quarantine, decisions on breaks and statements.
+    tables:
+      - name: files
+      - name: file_names
+      - name: quarantine
+      - name: break_actions
+      - name: statement_releases
+      - name: erasure_requests
+      - name: dead_events
